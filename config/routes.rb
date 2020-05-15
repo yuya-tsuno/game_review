@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   # resources :review_scores
   # resources :having_games, only: [:create, :destroy]
   # resources :likes, only: [:create, :destroy]
-  # resources :users
-  # devise_for :users #, only: [:create, :destroy]
+  resources :users
+  devise_for :users #, only: [:create, :destroy]
 end
