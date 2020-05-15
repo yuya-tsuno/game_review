@@ -1,0 +1,2 @@
+class Own < ApplicationRecord
+end
