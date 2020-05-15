@@ -1,11 +1,8 @@
 class Game < ApplicationRecord
-  # has_many :reviews, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   # has_many :comments, dependent: :destroy
   # has_many :having_games, dependent: :destroy
   # has_many :likes, dependent: :destroy
-
-  # has_many :review_categories, through: :reviews
-  # has_many :review_scores, through: :reviews
 
   # has_many :users, through: :having_games
   # has_many :users, through: :likes
