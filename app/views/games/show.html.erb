@@ -1,0 +1,14 @@
+<h1><%= @game.title%>の詳細</h1>
+
+<p><strong>ID: </strong><%= @game.id %></p>
+<p><strong>タイトル: </strong><%= @game.title %></p>
+<p><strong>制作会社: </strong><%= @game.company %></p>
+<p><strong>ジャンル: </strong><%= @game.genre %></p>
+<p><strong>価格: </strong><%= @game.price %>円</p> 
+<p><strong>発売日: </strong><%= @game.released_at %></p>
+<p><strong>あらすじ： </strong><%= @game.story %></p>
+<p><strong>パッケージ: </strong><%= @game.icon.url %></p>
+<p><%= image_tag(@game.icon.resize_for_game_icon.url) if @game.icon && @game.icon.url %></p>
+
+<%= link_to '編集へ', edit_game_path(@game.id) %> |
+<%= link_to 'ゲーム一覧へ', games_path %>

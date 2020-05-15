@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'games#index'
+  resources :games
+  # resources :comments
+  # resources :reviews
+  # resources :review_categories
+  # resources :review_scores
+  # resources :having_games, only: [:create, :destroy]
+  # resources :likes, only: [:create, :destroy]
+  # resources :users
+  # devise_for :users #, only: [:create, :destroy]
 end

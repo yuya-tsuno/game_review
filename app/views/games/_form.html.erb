@@ -1,0 +1,55 @@
+<%= form_with(model: @game, local: true) do |form| %>
+
+    <% if @game.errors.any? %>
+        <div id="error_explanation">
+        <h3><%= @game.errors.count %>件のエラーがあります。</h3>
+        <ul>
+        <% @game.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="game_tile">
+        <%= form.label :tilte %>:
+        <%= form.text_field :title %>
+    </div>
+
+    <div class="game_company">
+        <%= form.label :company %>:
+        <%= form.text_field :company %>
+    </div>
+        
+    <div class="game_ganre">
+        <%= form.label :genre %>:
+        <%= form.select :genre, Game.genres.keys.map {|k| [k, k]} %>
+    </div>
+    
+    <div class="game_price">
+        <%= form.label :price %>:
+        <%= form.number_field :price, min: 0, max: 100000 %>
+    </div>
+    
+    <div class="game_released_at">
+        <%= form.label :released_at %>:
+        <%= form.date_select :released_at %>
+    </div>
+    
+    <div class="game_story">
+        <%= form.label :story %>
+        <%= form.text_area :story %>
+    </div>
+    
+    <div class="game_icon">
+      <%= form.label :icon %>
+      <%= image_tag(@game.icon.resize_for_game_icon.url) if @game.icon && @game.icon.url %>
+      <%= form.file_field :icon %>
+      <%= form.hidden_field :icon_cache %>
+    </div>
+
+    <%= form.submit %>
+    
+<% end %>
+
+<%= link_to "ゲーム一覧画面にもどる", games_path %>
