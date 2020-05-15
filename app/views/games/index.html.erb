@@ -1,0 +1,23 @@
+<h2>PlayStation4 ゲームタイトル一覧</h2>
+
+<%= link_to 'トップ画面に戻る', root_path %>
+<%= link_to '新規ゲームタイトル追加', new_game_path %>
+
+<table>
+  <tr>
+    <th>パッケージ</th>
+    <th>ゲームタイトル</th>
+    <th>販売会社</th>
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+    <td><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %></td>
+    <td><%= game.title %></td>
+    <td><%= game.company %></td>
+    <td><%= link_to "ゲーム詳細", game_path(game.id) %></td>
+    <td><%= link_to "ゲーム編集", edit_game_path(game.id) %></td>
+    <td><%= link_to 'ゲーム削除', game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+  </tr>
+<% end %>
+</table>
