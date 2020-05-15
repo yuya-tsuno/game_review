@@ -1,0 +1,8 @@
+<h1>レビューID<%= @review.id %>の詳細</h1>
+
+<p><strong>ゲームタイトル: </strong><%= @review.game.title %></p>
+<p><strong>口コミ: </strong><%= @review.body %></p>
+<p><strong>レビューしたユーザー: </strong><%= @review.user.name %></p>
+
+<%= link_to '編集へ', edit_review_path(@review.id) %> |
+<%= link_to 'レビュー一覧へ', reviews_path %>
