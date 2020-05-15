@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
     t.integer "volume", default: 10, null: false
     t.integer "like", default: 10, null: false
     t.text "body"
+    t.integer "game_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
