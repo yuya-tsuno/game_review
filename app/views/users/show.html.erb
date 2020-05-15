@@ -1,0 +1,11 @@
+<h1><%= @user.name %>の詳細</h1>
+
+<p><strong>ID: </strong><%= @user.id %></p>
+<p><strong>名前: </strong><%= @user.name %></p>
+<p><strong>メールアドレス: </strong><%= @user.email %></p>
+<p><strong>自己紹介文: </strong><%= @user.introduce %></p> 
+<p><strong>アイコン: </strong><%= @user.icon.url %></p>
+<p><%= image_tag(@user.icon.resize_for_user_icon.url) if @user.icon && @user.icon.url %></p>
+
+<%= link_to '編集へ', edit_user_path(@user.id) %> |
+<%= link_to 'ユーザー一覧へ', users_path %>
