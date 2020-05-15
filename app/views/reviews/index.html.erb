@@ -2,18 +2,16 @@
 
 <table>
   <tr>
-    <th>レビュー</th>
+    <th>レビューしたユーザー</th>
+    <th>レビューされたゲームタイトル</th>
+    <th>レビュー総合点</th>
   </tr>
 
 <% @reviews.each do |review| %>
   <tr>
-    <td>グラフィック・サウンド<%= review.direction %></td>
-    <td>操作性<%= review.operability %></td>
-    <td>ストーリー・世界観<%= review.story %></td>
-    <td>ゲームボリューム<%= review.volume %></td>
-    <td>ハマり度<%= review.like %></td>
-    <td>コメント<%= review.body %></td>
-    <td>投稿者ID：<%= review.user_id %></td>
+    <td><%= review.user.name %>さんによる</td>
+    <td><%= review.game.title %>へのレビュー</td>
+    <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
     <td><%= link_to "レビュー詳細", review_path(review.id) %></td>
     <td><%= link_to "レビュー編集", edit_review_path(review.id) %></td>
     <td><%= link_to 'レビュー削除', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>

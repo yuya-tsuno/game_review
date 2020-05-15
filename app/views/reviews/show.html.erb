@@ -1,8 +1,12 @@
-<h1>レビューID<%= @review.id %>の詳細</h1>
+<h2><%= @review.user.name %>さんによる<%= @review.game.title %>へのレビュー</h2>
 
-<p><strong>ゲームタイトル: </strong><%= @review.game.title %></p>
-<p><strong>口コミ: </strong><%= @review.body %></p>
-<p><strong>レビューしたユーザー: </strong><%= @review.user.name %></p>
+<p><strong>総合点: </strong><%= @review.direction + @review.direction + @review.operability + @review.story + @review.volume %>点/100点</p>
+<p><strong>グラフィック・サウンド: </strong><%= @review.direction %>点/20点</p>
+<p><strong>操作性: </strong><%= @review.operability %>点/20点</p>
+<p><strong>ストーリー・世界観: </strong><%= @review.story %>点/20点</p>
+<p><strong>ゲームボリューム: </strong><%= @review.volume %>点/20点</p>
+<p><strong>ハマり度: </strong><%= @review.like %>点/20点</p>
+<p><strong>コメント: </strong><%= @review.body %></p>
 
 <%= link_to '編集へ', edit_review_path(@review.id) %> |
 <%= link_to 'レビュー一覧へ', reviews_path %>
