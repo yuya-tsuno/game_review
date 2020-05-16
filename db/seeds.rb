@@ -1,4 +1,4 @@
-5.times do |n|
+16.times do |n|
   n = n + 1
   Game.create(
     title: "title#{n}", 

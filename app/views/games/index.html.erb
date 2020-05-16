@@ -2,6 +2,41 @@
 
 <%= link_to '新規ゲームタイトル追加', new_game_path %>
 
+<%= search_form_for @q do |form| %>
+  <div class="search_field">
+    <%= form.label :title_or_company, "Title or Company" %>
+    <%= form.search_field :title_or_company_cont %>
+  </div>
+
+  <div class="search_field">
+    <%= form.label :price %>
+    <%= form.number_field :price_gteq, min: 0 %>以上〜
+    <%= form.number_field :price_lt, min: 0, max: 100000 %>未満
+  </div>
+
+  <div class="search_field">
+    <%= form.label :genre %>
+    <%= form.collection_check_boxes(:genre_in, Game.all, :id, :genre) do |b| %>
+      <%= b.label {b.text} %>
+      <%= b.check_box class:"chkgroup" do %>
+        <%= b.check_box + b.text %>
+  　　 <% end %>
+    <% end %>
+  </div>
+
+  <div class="search_field">
+    <%= form.label :releasd_at %>
+    <%= form.date_field :released_at_gteq %>〜
+    <%= form.date_field :released_at_lteq %>
+  </div>
+
+  <div class="action_field">
+    <%= form.submit "検索" %>
+  </div>
+
+<% end %>
+
+
 <table>
   <tr>
     <th>パッケージ</th>
