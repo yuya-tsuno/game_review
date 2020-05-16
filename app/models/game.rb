@@ -13,4 +13,7 @@ class Game < ApplicationRecord
   racing_action: 11, race: 12, music: 13, battle: 14, sports: 15, others: 16 }
   
   mount_uploader :icon, IconUploader
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_users, through: :favorites, source: :user
 end

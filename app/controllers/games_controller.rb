@@ -23,6 +23,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(game_id: @game.id)
   end
 
   def edit
