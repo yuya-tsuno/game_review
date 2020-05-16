@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations',
+    :sessions => 'users/sessions'
+  } 
+  
+  devise_scope :user do
+    get 'user/:id', to: 'users/registrations#detail'
+    get 'signup', to: 'users/registrations#new'
+    get 'login', to: 'users/sessions#new'
+    get 'logout', to: 'users/sessions#destroy'
+  end
+
   root 'games#index'
   resources :games
   # resources :comments
@@ -8,5 +20,6 @@ Rails.application.routes.draw do
   # resources :having_games, only: [:create, :destroy]
   # resources :likes, only: [:create, :destroy]
   resources :users
-  devise_for :users #, only: [:create, :destroy]
+  
+  
 end
