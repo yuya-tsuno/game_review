@@ -12,11 +12,11 @@ Rails.application.routes.draw do
   end
 
   root 'games#index'
-  resources :games
-  # resources :comments
+  resources :games do
+    resources :comments, only: [:create, :destroy]
+  end
+  
   resources :reviews
-  # resources :review_categories
-  # resources :review_scores
   resources :owns, only: [:index, :create, :destroy]
   resources :favorites, only: [:index,:create, :destroy]
   resources :users

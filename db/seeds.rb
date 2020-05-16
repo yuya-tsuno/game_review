@@ -24,6 +24,12 @@
     user_id: n
     )
 
+    Comment.create(
+      body: "commment_body#{n}",
+      game_id: n,
+      user_id: n
+      )
+
     Favorite.create(
       game_id: n,
       user_id: n
