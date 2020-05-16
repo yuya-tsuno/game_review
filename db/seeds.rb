@@ -28,4 +28,10 @@
       game_id: n,
       user_id: n
     )
+
+    Own.create(
+      game_id: n,
+      user_id: n
+    )
+
 end

@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
   end
 
   create_table "owns", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

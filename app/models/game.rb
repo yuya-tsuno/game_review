@@ -15,5 +15,8 @@ class Game < ApplicationRecord
   mount_uploader :icon, IconUploader
 
   has_many :favorites, dependent: :destroy
-  has_many :favorite_users, through: :favorites, source: :user
+  has_many :own_users, through: :owns, source: :user
+  
+  has_many :owns, dependent: :destroy
+  has_many :own_users, through: :owns, source: :user
 end
