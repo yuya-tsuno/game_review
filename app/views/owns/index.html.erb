@@ -1,0 +1,19 @@
+<h2>持っているゲーム登録一覧</h2>
+
+<table>
+  <tr>
+    <th>所有者</th>
+    <th>ゲームタイトル</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @owns.each do |own| %>
+    <tr>
+      <td><%= own.user.name %>さんは</td>
+      <td><%= own.game.title %></td>
+      <td>を持っています。</td>
+      <td><%= link_to '持っている削除', own_path(own.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    </tr>
+  <% end %>
+</table>

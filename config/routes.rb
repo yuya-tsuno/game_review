@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :reviews
   # resources :review_categories
   # resources :review_scores
-  # resources :having_games, only: [:create, :destroy]
+  resources :owns, only: [:index, :create, :destroy]
   resources :favorites, only: [:index,:create, :destroy]
   resources :users
   

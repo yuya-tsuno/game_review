@@ -16,6 +16,11 @@
   <%= link_to '気になる', favorites_path(game_id: @game.id), method: :post, class: 'btn btn-primary' %>
 <% end %>
 
+<% if @own.present? %>
+  <%= link_to '持っているを解除する', own_path(id: @own.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to '持ってる', owns_path(game_id: @game.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
 
 <%= link_to '編集へ', edit_game_path(@game.id) %> |
 <%= link_to 'ゲーム一覧へ', games_path %>
