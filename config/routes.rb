@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   root 'games#index'
+  get 'search', to: 'games#search'
   resources :games do
     resources :comments, only: [:create, :destroy]
   end
