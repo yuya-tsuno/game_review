@@ -24,16 +24,16 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "user_id"
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "title"
-    t.string "company"
-    t.integer "genre"
+    t.string "title", null: false
+    t.string "company", null: false
+    t.integer "genre", null: false
     t.integer "price"
     t.date "released_at"
     t.text "story"

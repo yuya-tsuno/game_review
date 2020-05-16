@@ -3,7 +3,8 @@
   Game.create(
     title: "title#{n}", 
     company: "company#{n}", 
-    price: n*1000
+    price: n*1000,
+    genre: n
     )
 
   User.create(
@@ -21,5 +22,10 @@
     body: "コメント#{n}",
     game_id: n,
     user_id: n
+    )
+
+    Favorite.create(
+      game_id: n,
+      user_id: n
     )
 end

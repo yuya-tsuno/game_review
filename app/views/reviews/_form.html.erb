@@ -16,8 +16,6 @@
       <%= form.collection_select :game_id, Game.all, :id, :title, {selected: params[:game_id]}%>
     </div>
 
-    <% form.hidden_field :user_id, value: 1 %>
-
     <div class="field">
       <%= form.label :direction %>
       <%= form.number_field :direction, min: 0, max: 20 %>
