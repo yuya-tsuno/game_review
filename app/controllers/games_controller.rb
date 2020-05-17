@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   def index
     # binding.pry
     @q = Game.ransack(params[:q])
-    @games = @q.result(distinct: true)
+    @games = @q.result(distinct: true).page(params[:page]).per(10)
   end
   
   def new

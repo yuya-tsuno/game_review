@@ -13,5 +13,4 @@ class Game < ApplicationRecord
   racing_action: 11, race: 12, music: 13, battle: 14, sports: 15, others: 16 }
   
   # ここに自前のスコープを設定？
-
 end
