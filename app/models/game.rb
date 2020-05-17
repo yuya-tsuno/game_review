@@ -12,6 +12,6 @@ class Game < ApplicationRecord
   shouting: 6, FPS_TPS: 7, pazzle: 8, simulation: 9, simulation_RPG: 10, 
   racing_action: 11, race: 12, music: 13, battle: 14, sports: 15, others: 16 }
   
-  mount_uploader :icon, IconUploader
+  # ここに自前のスコープを設定？
 
 end

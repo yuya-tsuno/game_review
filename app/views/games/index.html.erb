@@ -39,15 +39,16 @@
 
 <table>
   <tr>
-    <th>パッケージ</th>
-    <th>タイトル名</th>
-    <th>販売会社</th>
-    <th><%= sort_link(@q, :review_direction, "グラフィック・サウンド") %></th>
-    <th><%= sort_link(@q, :review_operability, "操作性") %></th>
-    <th><%= sort_link(@q, :review_story, "ストーリー・世界観") %></th>
-    <th><%= sort_link(@q, :review_volume, "ボリューム・やりこみ要素") %></th>
-    <th><%= sort_link(@q, :review_like, "ハマり度") %></th>
-    <th><%= sort_link(@q, :review_all, "総合点") %></th>
+    <th>パッケージ画像</th>
+    <th><%= sort_link(@q, :title, "タイトル名") %></th>
+    <th><%= sort_link(@q, :company, "販売会社") %></th>
+    <th><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :review_direction, "グラフィック・サウンド", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :review_operability, "操作性", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :review_story, "ストーリー・世界観", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :review_volume, "ボリューム・やりこみ要素", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :review_like, "ハマり度", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :review_all, "総合点", default_order: :desc) %></th>
   </tr>
 
 <% @games.each do |game| %>
@@ -55,15 +56,16 @@
     <td><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %></td>
     <td><%= game.title %></td>
     <td><%= game.company %></td>
+    <td><%= game.released_at %></td>
     <td><%= game.reviews.sum(:direction) * 5 / game.reviews.count %>点/100点</td>
     <td><%= game.reviews.sum(:operability) * 5 / game.reviews.count %>点/100点</td>
     <td><%= game.reviews.sum(:story) * 5 / game.reviews.count %>点/100点</td>
     <td><%= game.reviews.sum(:volume) * 5 / game.reviews.count %>点/100点</td>
     <td><%= game.reviews.sum(:like) * 5 / game.reviews.count %>点/100点</td>
     <td><%= game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:like) + game.reviews.sum(:like) / game.reviews.count%>点/100点</td>
-    <td><%= link_to "ゲーム詳細", game_path(game.id) %></td>
-    <td><%= link_to "ゲーム編集", edit_game_path(game.id) %></td>
-    <td><%= link_to 'ゲーム削除', game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
+    <td><%= link_to "詳細", game_path(game.id) %></td>
+    <td><%= link_to "編集", edit_game_path(game.id) %></td>
+    <td><%= link_to '削除', game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }%></td>
   </tr>
 <% end %>
 </table>

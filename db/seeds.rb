@@ -4,7 +4,8 @@
     title: "title#{n}", 
     company: "company#{n}", 
     price: n*1000,
-    genre: n
+    genre: n,
+    released_at: "2020-05-#{n}"
     )
 
   User.create(
