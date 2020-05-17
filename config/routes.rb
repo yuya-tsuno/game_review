@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/users/sign_in_as_a_guest', to: 'users#guest'  
+  
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
@@ -21,6 +23,5 @@ Rails.application.routes.draw do
   resources :owns, only: [:index, :create, :destroy]
   resources :favorites, only: [:index,:create, :destroy]
   resources :users
-  
   
 end

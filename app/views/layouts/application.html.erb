@@ -11,31 +11,28 @@
 
   <body>
     <header class="header">
-      <div class="header__bar row">
-        <h1><a href="/">PlayStation4 game review app</a></h1>
-        <div class="main-menu">
-          <% if user_signed_in? %>
-              <%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure to log out?' }  %>
-              <%= link_to "新規ゲーム投稿", new_game_path %>
-              <%= link_to "新規レビュー投稿", new_review_path %>
-              <%= link_to 'レビュー一覧', reviews_path %>
-              <%= link_to 'ユーザー一覧', users_path %>
-              <%= link_to '気になる一覧', favorites_path %>
-              <%= link_to '持っているゲーム一覧', owns_path %>
-          <% else %>
-              <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-              <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-          <% end %>
-      </div>
-      <div class="notice">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+      <h1><%= link_to "PlayStation4 game review app", root_path %></h1>
+
+      <div class="main-menu">
+        <% if user_signed_in? %>
+            <%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure to log out?' }  %>
+            <%= link_to "新規ゲーム投稿", new_game_path %>
+            <%= link_to "新規レビュー投稿", new_review_path %>
+            <%= link_to 'レビュー一覧', reviews_path %>
+            <%= link_to 'ユーザー一覧', users_path %>
+            <%= link_to '気になる一覧', favorites_path %>
+            <%= link_to '持っているゲーム一覧', owns_path %>
+        <% else %>
+            <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        <% end %>
       </div>
     </header>
 
-
     <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>
 

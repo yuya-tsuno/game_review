@@ -1,4 +1,6 @@
 class OwnsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @owns = Own.all
   end
