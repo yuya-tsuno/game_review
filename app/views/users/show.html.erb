@@ -3,6 +3,7 @@
 <p><strong>ID: </strong><%= @user.id %></p>
 <p><strong>名前: </strong><%= @user.name %></p>
 <p><strong>メールアドレス: </strong><%= @user.email %></p>
+<p><strong>管理者権限: </strong><%= @user.admin %></p>
 <p><strong>自己紹介文: </strong><%= @user.introduce %></p> 
 <p><strong>アイコン: </strong><%= @user.icon.url %></p>
 <p><%= image_tag(@user.icon.resize_for_user_icon.url) if @user.icon && @user.icon.url %></p>

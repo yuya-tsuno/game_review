@@ -48,23 +48,15 @@ User.create(
   email: "guest@example.com", 
   password: "pass_for_guest",
   introduce: "Thank you for your watching my review app, Guest!",
-  admin: true
-  )
-
-User.create(
-  name: "SSS", 
-  email: "s@s", 
-  password: "ssssss",
-  introduce: "Test user who has admin.",
-  admin: true
-  )
-
-User.create(
-  name: "AAA", 
-  email: "a@a", 
-  password: "aaaaaa",
-  introduce: "Test user who doesn't have admin.",
   admin: false
+  )
+
+User.create(
+  name: "Admin", 
+  email: "admin@example.com", 
+  password: "pass_for_admin",
+  introduce: "Thank you for your watching my review app, Admin!",
+  admin: true
   )
 
 16.times do |n|

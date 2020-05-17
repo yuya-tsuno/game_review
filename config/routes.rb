@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  post '/users/sign_in_as_a_guest', to: 'users#guest'  
+  post '/users/sign_in_as_a_guest', to: 'users#guest'
+  post '/users/sign_in_as_an_admin', to: 'users#admin'
   
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
