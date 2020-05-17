@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   end
 
   root 'games#index'
-  get 'search', to: 'games#search'
   resources :games do
     resources :comments, only: [:create, :destroy]
   end
@@ -24,5 +23,18 @@ Rails.application.routes.draw do
   resources :owns, only: [:index, :create, :destroy]
   resources :favorites, only: [:index,:create, :destroy]
   resources :users
+
+  namespace :admin do
+    root 'games#index'
+    resources :games do
+      resources :comments, only: [:create, :destroy]
+    end
+    
+    resources :reviews
+    resources :owns, only: [:index, :create, :destroy]
+    resources :favorites, only: [:index,:create, :destroy]
+    resources :users    
+  end
+
   
 end
