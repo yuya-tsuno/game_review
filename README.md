@@ -42,7 +42,7 @@ https://docs.google.com/presentation/d/1vAB0EuJuOOhw71vmgpAJ8TCp-g-9w1eJrdSchDRh
 ### 画面ワイヤーフレーム
 https://docs.google.com/presentation/d/1VyeEXDSZvNxQF6HzhPR4ytd48e-dX0hfbp_CR2u0vQE/edit?usp=sharing
 
-### 使用予定Gem
+### 追加使用Gem
   * carrierwave
   * mini_magick
   * devise
@@ -51,3 +51,4 @@ https://docs.google.com/presentation/d/1VyeEXDSZvNxQF6HzhPR4ytd48e-dX0hfbp_CR2u0
   * ransack
   * kaminari
   * bootstrap-sass
+  * letter_opener_web
