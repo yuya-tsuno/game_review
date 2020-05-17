@@ -1,7 +1,7 @@
 .body{
-  min-height: 100vh;
+  min-height: 50vh;
   position: relative;/*←相対位置*/
-  padding-bottom: 120px;/*←footerの高さ*/
+  padding-bottom: 0px;/*←footerの高さ*/
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
 
@@ -10,7 +10,7 @@ header {
   background-color: #fff;
   width: 100%;
 
-  h1, h2, p {
+  h1 {
     margin-left: 40px;
   }
 }
