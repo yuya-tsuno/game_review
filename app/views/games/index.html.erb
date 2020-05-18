@@ -51,7 +51,8 @@
     <th><%= sort_link(@q, :title, "タイトル名") %></th>
     <th><%= sort_link(@q, :company, "販売会社") %></th>
     <th><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
-    <th><%= sort_link(@q, :review_direction, "グラフィック・サウンド", default_order: :desc) %></th>
+
+    <th><%= sort_link(@q, :direction_score, "グラフィック・サウンド", default_order: :desc) %></th>
     <th><%= sort_link(@q, :review_operability, "操作性", default_order: :desc) %></th>
     <th><%= sort_link(@q, :review_story, "ストーリー・世界観", default_order: :desc) %></th>
     <th><%= sort_link(@q, :review_volume, "ボリューム・やりこみ要素", default_order: :desc) %></th>
