@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root 'games#index'
+    resources :games do
+      resources :comments, only: [:create, :destroy]
+    end
+    
+    resources :reviews
+    resources :owns, only: [:index, :create, :destroy]
+    resources :favorites, only: [:index,:create, :destroy]
+    resources :users    
+  end
+  
   post '/users/sign_in_as_a_guest', to: 'users#guest'
   post '/users/sign_in_as_an_admin', to: 'users#admin'
   
@@ -24,17 +36,6 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index,:create, :destroy]
   resources :users
 
-  namespace :admin do
-    root 'games#index'
-    resources :games do
-      resources :comments, only: [:create, :destroy]
-    end
-    
-    resources :reviews
-    resources :owns, only: [:index, :create, :destroy]
-    resources :favorites, only: [:index,:create, :destroy]
-    resources :users    
-  end
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   
