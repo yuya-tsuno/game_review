@@ -9,11 +9,13 @@ n = 0
     released_at: "2020-05-#{n}"
     )
 
-  User.create(
+  user = User.new(
     name: "user#{n}", 
     email: "user#{n}@email", 
     password: "user#{n}pass"
     )
+  user.skip_confirmation!
+  user.save
 
   Review.create(
     direction: n,
@@ -43,21 +45,25 @@ n = 0
     )
 end
 
-User.create(
+user = User.new(
   name: "Guest", 
   email: "guest@example.com", 
   password: "pass_for_guest",
   introduce: "Thank you for your watching my review app, Guest!",
   admin: false
   )
+user.skip_confirmation!
+user.save
 
-User.create(
+user = User.new(
   name: "Admin", 
   email: "admin@example.com", 
   password: "pass_for_admin",
   introduce: "Thank you for your watching my review app, Admin!",
   admin: true
   )
+user.skip_confirmation!
+user.save
 
 16.times do |n|
   n = n + 1
