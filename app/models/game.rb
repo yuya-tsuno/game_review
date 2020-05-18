@@ -16,4 +16,6 @@ class Game < ApplicationRecord
     query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
     Arel.sql(query)
   end
+  
+  mount_uploader :icon, IconUploader
 end

@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
     t.integer "story", default: 10, null: false
     t.integer "volume", default: 10, null: false
     t.integer "like", default: 10, null: false
+    t.string "summary"
     t.text "body"
     t.integer "game_id"
     t.integer "user_id"

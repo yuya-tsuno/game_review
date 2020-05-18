@@ -2,8 +2,8 @@
   <% comments.each do |comment| %>
     <% if comment.id.present? %>
       <li>
-        <span><%= comment.body %> by <%= comment.user.name %>さん</span> | 
-        <%= link_to "コメント削除" ,game_comment_path(comment.game.id, comment.id), method: :delete %>
+        <span><%= comment.body %> by <%= comment.user.name %>さん</span>
+        <%= link_to "コメント削除" ,game_comment_path(comment.game.id, comment.id), method: :delete if current_user ==  comment.user || current_user&.admin? %>
       </li>
     <% end %>
   <% end %>

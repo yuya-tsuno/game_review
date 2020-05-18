@@ -12,14 +12,15 @@ class CommentsController < ApplicationController
         format.html { redirect_to game_path(@game), notice: '投稿できませんでした...' }
       end
     end
-
-    def destroy
-      Comment.find_by(id: params[:id], game_id: params[:game_id]).destroy
-      redirect_to game_path(params[:game_id]), notice:"レビューを削除しました！"
-    end
-    
   end
 
+  def destroy
+    comment = Comment.find_by(id: params[:id], game_id: params[:game_id])
+    restrict_access(comment.user_id)
+    comment.destroy
+    redirect_to game_path(params[:game_id]), notice:"レビューを削除しました！"
+  end
+  
   private
 
   def comment_params

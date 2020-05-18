@@ -1,9 +1,9 @@
 class Admin::GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin?
   
   def index
-    # binding.pry
     @q = Game.ransack(params[:q])
     @games = @q.result(distinct: true).page(params[:page]).per(10)
   end
@@ -18,7 +18,7 @@ class Admin::GamesController < ApplicationController
       render :new
     else
       if @game.save
-        redirect_to game_path(@game.id), notice: "ゲームを作成しました！"
+        redirect_to admin_game_path(@game.id), notice: "ゲームを作成しました！"
       else
         render :new
       end
@@ -37,7 +37,7 @@ class Admin::GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
-      redirect_to game_path(@game.id), notice: "ゲームを編集しました！"
+      redirect_to admin_game_path(@game.id), notice: "ゲームを編集しました！"
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class Admin::GamesController < ApplicationController
 
   def destroy
     @game.destroy
-    redirect_to games_path, notice:"ゲームを削除しました！"
+    redirect_to admin_games_path, notice:"ゲームを削除しました！"
   end
 
   private
