@@ -1,5 +1,6 @@
 class Admin::FavoritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin?
 
   def index
     @favorites = Favorite.all

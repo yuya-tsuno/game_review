@@ -1,0 +1,10 @@
+<ul>
+  <% comments.each do |comment| %>
+    <% if comment.id.present? %>
+      <li>
+        <span><%= comment.body %> by <%= comment.user.name %>さん</span>
+        <%= link_to "コメント削除", admin_game_comment_path(comment.game_id, comment.id), method: :delete %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

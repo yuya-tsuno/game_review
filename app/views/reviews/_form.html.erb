@@ -13,7 +13,7 @@
 
     <div class="filed">
       <%= form.label :game_id %>
-      <%= form.collection_select :game_id, Game.all, :id, :title, {selected: params[:game_id]}%>
+      <%= form.collection_select :game_id, Game.all, :id, :title, {selected: @review.game_id}%>
     </div>
 
     <div class="field">
@@ -42,6 +42,11 @@
     </div>
 
     <div class="field">
+      <%= form.label :summary %>
+      <%= form.text_field :summary %>
+    </div>
+
+    <div class="field">
       <%= form.label :body %>
       <%= form.text_area :body %>
     </div>
@@ -50,4 +55,4 @@
     
 <% end %>
 
-<%= link_to "ゲーム一覧画面にもどる", reviews_path %>
+<%= link_to "ゲーム一覧画面にもどる", games_path %>

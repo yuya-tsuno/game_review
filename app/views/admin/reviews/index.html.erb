@@ -1,0 +1,25 @@
+<h2>レビュー一覧</h2>
+
+<table>
+  <tr>
+    <th>要約</th>
+    <th>レビューしたユーザー</th>
+    <th>レビューされたゲームタイトル</th>
+    <th>レビュー総合点</th>
+  </tr>
+
+<% @reviews.each do |review| %>
+  <tr>
+    <td><%= review.summary %></td>
+    <td><%= review.user.name %>さんによる</td>
+    <td><%= review.game.title %>へのレビュー</td>
+    <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
+    <td><%= link_to "レビュー詳細", admin_review_path(review.id), class: "btn btn-primary mr-3" %></td>
+    <td><%= link_to "レビュー編集", edit_admin_review_path(review.id), class: "btn btn-primary mr-3" %></td>
+    <td><%= link_to 'レビュー削除', admin_review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'トップ画面に戻る', admin_root_path, class: "btn btn-primary mr-3"  %>
+<%= link_to '新規レビュー作成', new_admin_review_path, class: "btn btn-primary mr-3"  %>

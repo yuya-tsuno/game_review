@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
-  
+  before_action :set_user, only: [:show, :edit, :update, :destroy]  
+  before_action -> {restrict_access(@user.id)}, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
   end
-
+  
   def new
     @user = User.new
   end
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
       render :new
     else
       if @user.save
-        redirect_to user_path(@user.id), notice: "ユーザーを作成しました！"
+        redirect_to admin_user_path(@user.id), notice: "ユーザー登録しました！"
       else
         render :new
       end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user.id), notice: "ユーザーを編集しました！"
+      redirect_to admin_user_path(@user.id), notice: "ユーザー情報を編集しました！"
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path, notice:"ユーザーを削除しました！"
+    redirect_to admin_users_path, notice:"ユーザーを削除しました！"
   end
 
   def guest
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to admin_root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def admin
@@ -57,7 +58,7 @@ class UsersController < ApplicationController
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
     sign_in user
-    redirect_to root_path, notice: '管理者ユーザーとしてログインしました。'
+    redirect_to admin_root_path, notice: '管理者ユーザーとしてログインしました。'
   end
 
   private

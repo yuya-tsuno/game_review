@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action -> {restrict_access(@review.user_id)}, only: [:edit, :update, :destroy]
   
   def index
     @reviews = Review.all
@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
       render :new
     else
       if @review.save
-        redirect_to reviews_path, notice: "レビューを作成しました！"
+        redirect_to review_path(@review.id), notice: "レビューありがとうございます！！"
       else
         render :new
       end
@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to reviews_path, notice: "レビューを編集しました！"
+      redirect_to review_path(@review.id), notice: "レビューを編集しました！"
     else
       render :edit
     end
@@ -40,13 +40,13 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review.destroy
-    redirect_to reviews_path, notice:"レビューを削除しました！"
+    redirect_to user_path(@review.user_id), notice:"レビューを削除しました！"
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:direction, :operability, :story, :volume, :like, :body, :game_id, :user_id)
+    params.require(:review).permit(:direction, :operability, :story, :volume, :like, :summary, :body, :game_id, :user_id)
   end
 
   def set_review

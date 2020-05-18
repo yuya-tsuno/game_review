@@ -23,7 +23,8 @@ n = 0
     story: n,
     volume: n,
     like: n,
-    body: "コメント#{n}",
+    summary: "レビューの要約#{n}",
+    body: "レビューのコメント本文#{n}",
     game_id: n,
     user_id: n
     )

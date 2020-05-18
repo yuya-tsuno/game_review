@@ -4,10 +4,10 @@ Rails.application.routes.draw do
     resources :games do
       resources :comments, only: [:create, :destroy]
     end
-    
+    resources :comments, only: [:index, :edit, :update, :destroy]
     resources :reviews
     resources :owns, only: [:index, :create, :destroy]
-    resources :favorites, only: [:index,:create, :destroy]
+    resources :favorites, only: [:index, :create, :destroy]
     resources :users    
   end
   
@@ -27,14 +27,14 @@ Rails.application.routes.draw do
   end
 
   root 'games#index'
-  resources :games do
+  resources :games, only: [:index, :new, :create, :show] do
     resources :comments, only: [:create, :destroy]
   end
   
-  resources :reviews
-  resources :owns, only: [:index, :create, :destroy]
-  resources :favorites, only: [:index,:create, :destroy]
-  resources :users
+  resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :owns, only: [:create, :destroy]
+  resources :favorites, only: [:create, :destroy]
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
 
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
