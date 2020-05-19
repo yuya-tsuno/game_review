@@ -17,6 +17,11 @@ class Game < ApplicationRecord
     Arel.sql(query)
   end
 
+  ransacker :reviews_count do
+    query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
+    Arel.sql(query)
+  end
+
   # COLUMN_NAME_SEARCH_MAP = {
   #   "a" => [1],
   #   "b" => [2,3],
