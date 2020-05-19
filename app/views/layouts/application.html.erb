@@ -13,34 +13,41 @@
       <div class="main-menu">
         <% if user_signed_in? && current_user&.admin? %>
           <h1><%= link_to "みんなのおすすめPS4ソフト for Admin", admin_root_path %></h1>
-          <%= link_to current_user.name+"さんのプロフィール", admin_user_path(current_user.id) %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }  %>
-          <%= link_to "新規ゲーム投稿", new_admin_game_path %>
-          <%= link_to "新規レビュー投稿", new_admin_review_path %>
-          <%= link_to "レビュー一覧", admin_reviews_path %>
-          <%= link_to "コメント一覧", admin_comments_path %>
-          <%= link_to "気になる一覧", admin_favorites_path %>
-          <%= link_to "持ってる一覧", admin_owns_path %>
-          <%= link_to "ユーザー一覧", admin_users_path %>
+          <div>
+            <%= link_to current_user.name+"さんのプロフィール", admin_user_path(current_user.id) %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }  %>
+            <%= link_to "新規ゲーム投稿", new_admin_game_path %>
+            <%= link_to "新規レビュー投稿", new_admin_review_path %>
+            <%= link_to "レビュー一覧", admin_reviews_path %>
+            <%= link_to "コメント一覧", admin_comments_path %>
+            <%= link_to "気になる一覧", admin_favorites_path %>
+            <%= link_to "持ってる一覧", admin_owns_path %>
+            <%= link_to "ユーザー一覧", admin_users_path %>
+          </div>
         <% elsif user_signed_in? %>
           <h1><%= link_to "みんなのおすすめPS4ソフト", root_path %></h1>
-          <%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？?' }  %>
-          <%= link_to "新規ゲーム投稿", new_game_path %>
-          <%= link_to "新規レビュー投稿", new_review_path %>
+          <div>
+            <%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？?' }  %>
+            <%= link_to "新規レビュー投稿", new_review_path %>
+          </div>
         <% else %>
           <h1><%= link_to "みんなのおすすめPS4ソフト", root_path %></h1>
-          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+          <div>
+            <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+            <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+          </div>
         <% end %>
       </div>
 
-      <% if notice %>
-        <p class="alert alert-notice"><%= notice %></p>
-      <% end %>
-      <% if alert %>
-        <p class="alert alert-error"><%= alert %></p>
-      <% end %>
+      <div>
+        <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+      </div>
       
     </header>
 

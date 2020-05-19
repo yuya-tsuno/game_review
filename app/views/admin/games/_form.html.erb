@@ -22,7 +22,7 @@
       
   <div class="field">
     <%= form.label :genre %>:
-    <%= form.select :genre_eq, Game.genres.map {|k, v| [Game.genres_i18n[k], v]}, include_blank: true %>
+    <%= form.select :genre, Game.genres.keys.map {|k| [I18n.t("enums.game.genre.#{k}"), k]} %>
   </div>
   
   <div class="field">
