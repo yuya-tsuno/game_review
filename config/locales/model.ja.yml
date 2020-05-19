@@ -1,0 +1,39 @@
+ja:
+  activerecord:
+    models:
+      game: ゲーム
+      review: ユーザー
+      comment: コメント
+      favorite: 気になる
+      own: 持ってる
+      user: ユーザー
+    attributes:
+      game:
+        title: タイトル
+        company: 販売会社
+        genre: ジャンル
+        price: 価格
+        released_at: 発売日
+        story: ストーリー・概要
+        icon: パッケージ
+      review:
+        directon: グラフィック・サウンド
+        operability: 操作性・快適性
+        story: ストーリー・世界観
+        volume: ボリューム・やりこみ要素
+        like: ハマり度
+        summary: 要約
+        body: レビュー本文 
+      comment:
+        body: コメント本文
+      favorite:
+      own:
+      user:
+        name: 名前
+        email: メールアドレス
+        introduce: プロフィール文
+        icon: アイコン
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+        admin: 管理者権限
