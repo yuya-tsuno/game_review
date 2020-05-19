@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.integer "game_id"
-    t.integer "user_id"
+    t.text "body", null: false
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,16 +55,16 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
     t.integer "story", default: 10, null: false
     t.integer "volume", default: 10, null: false
     t.integer "like", default: 10, null: false
-    t.string "summary"
-    t.text "body"
-    t.integer "game_id"
-    t.integer "user_id"
+    t.string "summary", null: false
+    t.text "body", null: false
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "introduce"
     t.text "icon"
     t.boolean "admin", default: false, null: false
