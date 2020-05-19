@@ -17,12 +17,12 @@ ja:
         story: ストーリー・概要
         icon: パッケージ
       review:
-        directon: グラフィック・サウンド
+        direction: グラフィック・サウンド
         operability: 操作性・快適性
         story: ストーリー・世界観
         volume: ボリューム・やりこみ要素
         like: ハマり度
-        summary: 要約
+        summary: 見出し
         body: レビュー本文 
       comment:
         body: コメント本文

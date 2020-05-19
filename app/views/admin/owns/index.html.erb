@@ -7,12 +7,12 @@
     <th></th>
   </tr>
 
-<% @owns.each do |own| %>
-  <tr>
-    <td><%= link_to "#{own.user.name}さん", admin_user_path(own.user_id) %>が</td>
-    <td><%= link_to own.game.title, admin_game_path(own.game_id) %>を持ってる登録しました</td>
-  </tr>
-<% end %>
+  <% @owns.each do |own| %>
+    <tr>
+      <td><%= link_to "#{own.user.name}さん", admin_user_path(own.user_id) %>が</td>
+      <td><%= link_to own.game.title, admin_game_path(own.game_id) %>を持ってる登録しました</td>
+    </tr>
+  <% end %>
 </table>
 
 <%= link_to 'トップ画面に戻る', admin_root_path, class: "btn btn-primary mr-3"  %>

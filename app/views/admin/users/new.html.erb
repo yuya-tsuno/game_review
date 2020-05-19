@@ -1,35 +1,33 @@
-<h2>新規ユーザー登録画面</h2>
+<h2>新規ユーザー登録</h2>
 
 <%= form_with(model: @user, local: true) do |form| %>
-
-    <% if @user.errors.any? %>
-        <div id="error_explanation">
-        <h3><%= @user.errors.count %>件のエラーがあります。</h3>
-        <ul>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @user.errors.count %>件のエラーがあります。</h3>
+      <ul>
         <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
+          <li><%= msg %></li>
         <% end %>
-        </ul>
-        </div>
-    <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-    <div class="field">
-        <%= form.label :name %>
-        <%= form.text_field :name %>
-    </div>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
 
-    <div class="field">
-        <%= form.label :email %>
-        <%= form.text_field :email %>
-    </div>
-        
-    <div class="field">
-        <%= form.label :password %>
-        <%= form.text_field :password %>
-    </div>
-    
-    <%= form.submit %>
-    
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+      
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password %>
+  </div>
+  
+  <%= form.submit %>
 <% end %>
 
-<%= link_to "ユーザー一覧画面にもどる", users_path %>
+<%= link_to "ユーザー一覧", users_path %>

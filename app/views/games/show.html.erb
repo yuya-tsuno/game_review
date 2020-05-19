@@ -24,7 +24,6 @@
 
 <p>--------------------------------------------------------------</p>
 <h4><%= @game.title%>に対する<%= @game.reviews.count %>件のレビュー</h4>
-<%= link_to 'レビューを書く', new_review_path %>
 <table>
   <tr>
     <th>レビューしたユーザー</th>
@@ -52,6 +51,5 @@
   <%= render partial: 'comments/index', locals: { comments: @comments, game: @game, user: current_user } %>
 </div>
 <%= render partial: 'comments/form', locals: { comment: @comment, game: @game, user: current_user } %>
-
 
 <%= link_to 'ゲーム一覧へ', games_path %>

@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show]
   
   def index
+    # binding.pry
     @q = Game.ransack(params[:q])
     @games = @q.result(distinct: true).page(params[:page]).per(10)
   end
@@ -38,7 +39,7 @@ class GamesController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:title_or_company_cont, :price_gteq, :price_lt, {:genre_in => []}, :released_at_gteq, :released_at_lteq)
+    params.require(:q).permit(:title_or_company_cont, :price_gteq, :price_lt, :genre_eq, :released_at_gteq, :released_at_lteq)
   end
 
   def set_game

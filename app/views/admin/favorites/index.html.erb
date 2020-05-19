@@ -7,12 +7,12 @@
     <th></th>
   </tr>
 
-<% @favorites.each do |favorite| %>
-  <tr>
-    <td><%= link_to "#{favorite.user.name}さん", admin_user_path(favorite.user_id) %>が</td>
-    <td><%= link_to favorite.game.title, admin_game_path(favorite.game_id) %>を気になる登録しました</td>
-  </tr>
-<% end %>
+  <% @favorites.each do |favorite| %>
+    <tr>
+      <td><%= link_to "#{favorite.user.name}さん", admin_user_path(favorite.user_id) %>が</td>
+      <td><%= link_to favorite.game.title, admin_game_path(favorite.game_id) %>を気になる登録しました</td>
+    </tr>
+  <% end %>
 </table>
 
 <%= link_to 'トップ画面に戻る', admin_root_path, class: "btn btn-primary mr-3"  %>

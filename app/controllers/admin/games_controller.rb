@@ -55,7 +55,7 @@ class Admin::GamesController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:title_or_company_cont, :price_gteq, :price_lt, {:genre_in => []}, :released_at_gteq, :released_at_lteq)
+    params.require(:q).permit(:title_or_company_cont, :price_gteq, :price_lt, :genre_eq, :released_at_gteq, :released_at_lteq)
   end
 
   def set_game
