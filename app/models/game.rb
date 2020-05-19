@@ -16,6 +16,16 @@ class Game < ApplicationRecord
     query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
     Arel.sql(query)
   end
+
+  # COLUMN_NAME_SEARCH_MAP = {
+  #   "a" => [1],
+  #   "b" => [2,3],
+  #   "c" => [4,5]
+  # }
+
+  # ransacker :column_name_search, formatter: proc { |v| COLUMN_NAME_SEARCH_MAP[v.to_sym] } do |parent|
+  #   parent.table[:column_name]
+  # end
   
   mount_uploader :icon, IconUploader
 end
