@@ -1,10 +1,8 @@
 <h2>PlayStation4 ゲームタイトル一覧</h2>
 
-<%= link_to '新規ゲームタイトル追加', new_game_path %>
-
 <%= search_form_for @q do |form| %>
   <div class="search_field">
-    <%= form.label :title_or_company, "Title or Company" %> : 
+    <%= form.label :title_or_company, "タイトルまたは販売会社" %> : 
     <%= form.search_field :title_or_company_cont %>
   </div>
 
@@ -16,24 +14,11 @@
 
   <div class="search_field">
     <%= form.label :genre %> : 
-    <label for="q_genre_in_1">action</label><input class="chkgroup" type="checkbox" value="1" name="q[genre_in][]" id="q_genre_in_1">
-    <label for="q_genre_in_2">action RPG</label><input class="chkgroup" type="checkbox" value="2" name="q[genre_in][]" id="q_genre_in_2">
-    <label for="q_genre_in_3">RPG</label><input class="chkgroup" type="checkbox" value="3" name="q[genre_in][]" id="q_genre_in_3">
-    <label for="q_genre_in_4">adventure</label><input class="chkgroup" type="checkbox" value="4" name="q[genre_in][]" id="q_genre_in_4">
-    <label for="q_genre_in_5">action_adventure</label><input class="chkgroup" type="checkbox" value="5" name="q[genre_in][]" id="q_genre_in_5">
-    <label for="q_genre_in_6">shouting</label><input class="chkgroup" type="checkbox" value="6" name="q[genre_in][]" id="q_genre_in_6">
-    <label for="q_genre_in_7">FPS/TPS</label><input class="chkgroup" type="checkbox" value="7" name="q[genre_in][]" id="q_genre_in_7">
-    <label for="q_genre_in_8">pazzle</label><input class="chkgroup" type="checkbox" value="8" name="q[genre_in][]" id="q_genre_in_8">
-    <label for="q_genre_in_9">simulation</label><input class="chkgroup" type="checkbox" value="9" name="q[genre_in][]" id="q_genre_in_9">
-    <label for="q_genre_in_10">racing</label><input class="chkgroup" type="checkbox" value="10" name="q[genre_in][]" id="q_genre_in_10">
-    <label for="q_genre_in_11">music</label><input class="chkgroup" type="checkbox" value="11" name="q[genre_in][]" id="q_genre_in_11">
-    <label for="q_genre_in_12">battle</label><input class="chkgroup" type="checkbox" value="12" name="q[genre_in][]" id="q_genre_in_12">
-    <label for="q_genre_in_13">sports</label><input class="chkgroup" type="checkbox" value="13" name="q[genre_in][]" id="q_genre_in_13">
-    <label for="q_genre_in_14">others</label><input class="chkgroup" type="checkbox" value="14" name="q[genre_in][]" id="q_genre_in_14">
+    <%= form.select :genre_eq, Game.genres.map {|k, v| [Game.genres_i18n[k], v]}, include_blank: true %>
   </div>
   
   <div class="search_field">
-    <%= form.label :releasd_at %> : 
+    <%= form.label :released_at %> : 
     <%= form.date_field :released_at_gteq %>〜
     <%= form.date_field :released_at_lteq %>
   </div>
@@ -41,7 +26,6 @@
   <div class="action_field">
     <%= form.submit "検索" %>
   </div>
-
 <% end %>
 
 

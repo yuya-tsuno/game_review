@@ -4,7 +4,6 @@
     <title>GameReview</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,9 +12,9 @@
     <header class="header">
       <div class="main-menu">
         <% if user_signed_in? && current_user&.admin? %>
-          <h1><%= link_to "PlayStation4 game review app for Admin", admin_root_path %></h1>
+          <h1><%= link_to "みんなのおすすめPS4ソフト for Admin", admin_root_path %></h1>
           <%= link_to current_user.name+"さんのプロフィール", admin_user_path(current_user.id) %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure to log out?' }  %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }  %>
           <%= link_to "新規ゲーム投稿", new_admin_game_path %>
           <%= link_to "新規レビュー投稿", new_admin_review_path %>
           <%= link_to "レビュー一覧", admin_reviews_path %>
@@ -24,13 +23,13 @@
           <%= link_to "持ってる一覧", admin_owns_path %>
           <%= link_to "ユーザー一覧", admin_users_path %>
         <% elsif user_signed_in? %>
-          <h1><%= link_to "PlayStation4 game review app", root_path %></h1>
+          <h1><%= link_to "みんなのおすすめPS4ソフト", root_path %></h1>
           <%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure to log out?' }  %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？?' }  %>
           <%= link_to "新規ゲーム投稿", new_game_path %>
           <%= link_to "新規レビュー投稿", new_review_path %>
         <% else %>
-          <h1><%= link_to "PlayStation4 game review app", root_path %></h1>
+          <h1><%= link_to "みんなのおすすめPS4ソフト", root_path %></h1>
           <%= link_to "ログイン", new_user_session_path, class: 'post' %>
           <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
         <% end %>

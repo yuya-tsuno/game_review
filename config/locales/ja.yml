@@ -178,3 +178,20 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  enums:
+    game:
+      genre:
+        action: "アクション"
+        action_RPG: "アクションRPG"
+        RPG: "RPG"
+        adventure: "アドベンチャー"
+        action_adventure: "アクションアドベンチャー"
+        shouting: "シューティング"
+        FPS_TPS: "FPS・TPS"
+        pazzle: "パズル"
+        simulation: "シミュレーション"
+        racing: "レーシング"
+        music: "ミュージック"
+        battle: "格闘"
+        sports: "スポーツ"
+        other: "その他" 
