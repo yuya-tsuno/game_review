@@ -1,4 +1,9 @@
 class Game < ApplicationRecord
+  validates :title, presence: true, uniqueness: true
+  validates :company, presence: true
+  validates :genre, presence: true
+  validates :price, numericality: { only_integer: true }
+
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
 

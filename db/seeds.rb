@@ -1,3 +1,4 @@
+# シードデータ14個
 n = 0
 14.times do |n|
   n = n + 1 
@@ -11,7 +12,7 @@ n = 0
 
   user = User.new(
     name: "user#{n}", 
-    email: "user#{n}@email", 
+    email: "user#{n}@e.mail", 
     password: "user#{n}pass"
     )
   user.skip_confirmation!
@@ -24,13 +25,13 @@ n = 0
     volume: n,
     like: n,
     summary: "レビューの要約#{n}",
-    body: "レビューのコメント本文#{n}",
+    body: "レビュー本文#{n}",
     game_id: n,
     user_id: n
     )
 
     Comment.create(
-      body: "commment_body#{n}",
+      body: "コメント本文#{n}",
       game_id: n,
       user_id: n
       )
@@ -46,7 +47,9 @@ n = 0
     )
 end
 
+# ゲストユーザー用シードデータ
 guest_user = User.new(
+  # id: 15,
   name: "Guest", 
   email: "guest@example.com", 
   password: "pass_for_guest",
@@ -56,7 +59,40 @@ guest_user = User.new(
 guest_user.skip_confirmation!
 guest_user.save
 
+10.times do |n|
+  n = n + 1 
+  Review.create(
+    direction: n,
+    operability: n,
+    story: n,
+    volume: n,
+    like: n,
+    summary: "Guestによるレビューの要約#{n}",
+    body: "Guestによるレビューの本文#{n}",
+    game_id: n,
+    user_id: 15
+    )
+
+    Comment.create(
+      body: "Guestによるコメントの本文#{n}",
+      game_id: n,
+      user_id: 15
+      )
+
+    Favorite.create(
+      game_id: n,
+      user_id: 15
+    )
+
+    Own.create(
+      game_id: n,
+      user_id: 15
+    )
+end
+
+# ゲストユーザー（管理者）用シードデータ
 admin_user = User.new(
+  # id: 16,
   name: "Admin", 
   email: "admin@example.com", 
   password: "pass_for_admin",
@@ -66,10 +102,33 @@ admin_user = User.new(
 admin_user.skip_confirmation!
 admin_user.save
 
-Game.create(
-  title: "non_review_title", 
-  company: "non_named_company", 
-  price: 1,
-  genre: 4,
-  released_at: "2020-04-04"
-  )
+10.times do |n|
+  n = n + 1 
+  Review.create(
+    direction: n,
+    operability: n,
+    story: n,
+    volume: n,
+    like: n,
+    summary: "Adminによるレビューの要約#{n}",
+    body: "Adminによるレビューの本文#{n}",
+    game_id: n,
+    user_id: 16
+    )
+
+    Comment.create(
+      body: "Adminによるコメントの本文#{n}",
+      game_id: n,
+      user_id: 16
+      )
+
+    Favorite.create(
+      game_id: n,
+      user_id: 16
+    )
+
+    Own.create(
+      game_id: n,
+      user_id: 16
+    )
+end
