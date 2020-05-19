@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
     t.string "title", null: false
     t.string "company", null: false
     t.integer "genre", null: false
-    t.integer "price"
+    t.integer "price", default: 5000, null: false
     t.date "released_at"
     t.text "story"
     t.text "icon"
