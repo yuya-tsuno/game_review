@@ -58,6 +58,7 @@
     <th><%= sort_link(@q, :review_volume, "ボリューム・やりこみ要素", default_order: :desc) %></th>
     <th><%= sort_link(@q, :review_like, "ハマり度", default_order: :desc) %></th>
     <th><%= sort_link(@q, :review_all, "総合点", default_order: :desc) %></th>
+    <th><%= sort_link(@q, :reviews_count, "レビュー件数", default_order: :desc) %></th>
     <th></th>
   </tr>
 
@@ -73,6 +74,7 @@
     <td><%= game.reviews.sum(:volume) * 5 / game.reviews.count if game.reviews.present? %>点/100点</td>
     <td><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>点/100点</td>
     <td><%= game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like) / game.reviews.count if game.reviews.present? %>点/100点</td>
+    <td><%= game.reviews.count %>件のレビュー</td>
     <td><%= link_to "詳細", game_path(game.id) %></td>
   </tr>
 <% end %>
