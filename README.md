@@ -54,4 +54,9 @@ https://docs.google.com/presentation/d/1VyeEXDSZvNxQF6HzhPR4ytd48e-dX0hfbp_CR2u0
   * bootstrap-sass
   * letter_opener_web
   * rails-i18n
-  * enum_help 
+  * enum_help
+  * rspec-rails
+  * launchy
+  * webdrivers
+  * factory_bot_rails
+  * faker
