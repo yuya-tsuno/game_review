@@ -1,4 +1,15 @@
-<h1>新しいレビューが投稿されました！</h1>
-<h4>game_title: <%= @inform.game %></h4>
-<h4>レビュー者</h4>
-<p>reviewer: <%= @inform.revirew %></p>
+<h5>To <%= @send_user.name %>さん</h5>
+
+<h3><%= @review.user.name %>さんより、<%= @review.game.title %>に新しいレビューが投稿されました！</h3>
+
+<p>レビュー内容</p>
+<h4><%= @review.summary %></h4>
+<p>グラフィック・サウンド: <%= @review.direction %>点/20点</p>
+<p>操作性: <%= @review.operability %>点/20点</p>
+<p>ストーリー・世界観: <%= @review.story %>点/20点</p>
+<p>ゲームボリューム: <%= @review.volume %>点/20点</p>
+<p>ハマり度: <%= @review.like %>点/20点</p>
+<p>総合点: <%= @review.direction + @review.direction + @review.operability + @review.story + @review.volume %>点/100点</p>
+<p>コメント: <%= @review.body %></p>
+
+<h5>From PS4 game review app</h5>

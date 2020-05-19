@@ -17,6 +17,9 @@ class ReviewsController < ApplicationController
       render :new
     else
       if @review.save
+        @review.game.favorites.each do |favorite|
+          ReviewMailer.inform_mail(@review, favorite.user).deliver
+        end
         redirect_to review_path(@review.id), notice: "レビューありがとうございます！！"
       else
         render :new
