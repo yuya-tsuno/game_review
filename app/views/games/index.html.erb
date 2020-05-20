@@ -3,7 +3,7 @@
 <%= search_form_for @q do |form| %>
   <div class="search_field">
     <%= form.label :title_or_company, "タイトルまたは販売会社" %> : 
-    <%= form.search_field :title_or_company_cont %>
+    <%= form.search_field :title_or_company_cont, class: "search_title_or_company_form" %>
   </div>
 
   <div class="search_field">
@@ -47,7 +47,7 @@
   </tr>
 
 <% @games.each do |game| %>
-  <tr>
+  <tr class="game_row">
     <td><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %></td>
     <td><%= game.title %></td>
     <td><%= game.company %></td>

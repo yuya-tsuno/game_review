@@ -3,7 +3,7 @@ class OwnsController < ApplicationController
 
   def create
     own = current_user.owns.create(game_id: params[:game_id])
-    redirect_to game_path(own.game.id), notice: "#{own.game.title}を持っている登録しました"
+    redirect_to game_path(own.game.id), notice: "#{own.game.title}を持ってる登録しました"
   end
 
   def destroy

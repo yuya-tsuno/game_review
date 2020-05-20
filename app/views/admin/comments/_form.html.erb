@@ -11,11 +11,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :body, "コメント本文" %>
-    <%= form.text_area :body %>
+    <%= form.label :body, "コメント" %>
+    <%= form.text_area :body, class: "comment_area" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "コメントする" %>
   </div>
 <% end %>
