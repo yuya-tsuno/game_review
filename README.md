@@ -60,3 +60,5 @@ https://docs.google.com/presentation/d/1VyeEXDSZvNxQF6HzhPR4ytd48e-dX0hfbp_CR2u0
   * webdrivers
   * factory_bot_rails
   * faker
+  * spring-commands-rspec
+  * database_cleaner

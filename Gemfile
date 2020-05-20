@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
@@ -62,6 +63,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper'
   gem 'webdrivers'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
