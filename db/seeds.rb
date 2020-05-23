@@ -7,13 +7,15 @@ n = 0
     company: "company#{n}", 
     price: n*1000,
     genre: n,
-    released_at: "2020-05-#{n}"
+    released_at: "2020-05-#{n}",
+    icon: File.open("./app/assets/images/seed_game/Assassin's Creed 4 Black Flag.jpg"),
     )
 
   user = User.new(
     name: "user#{n}", 
     email: "user#{n}@e.mail", 
-    password: "user#{n}pass"
+    password: "user#{n}pass",
+    icon: File.open("./app/assets/images/seed_user/アルノ.jpg"),
     )
   user.skip_confirmation!
   user.save
@@ -27,23 +29,23 @@ n = 0
     summary: "レビューの要約#{n}",
     body: "レビュー本文#{n}",
     game_id: n,
-    user_id: n
+    user_id: n,
     )
 
     Comment.create(
       body: "コメント本文#{n}",
       game_id: n,
-      user_id: n
+      user_id: n,
       )
 
     Favorite.create(
       game_id: n,
-      user_id: n
+      user_id: n,
     )
 
     Own.create(
       game_id: n,
-      user_id: n
+      user_id: n,
     )
 end
 
@@ -54,7 +56,8 @@ guest_user = User.new(
   email: "guest@example.com", 
   password: "pass_for_guest",
   introduce: "Thank you for your watching my review app, Guest!",
-  admin: false
+  admin: false,
+  icon: File.open("./app/assets/images/seed_user/三玖.png"),
   )
 guest_user.skip_confirmation!
 guest_user.save
@@ -70,23 +73,23 @@ guest_user.save
     summary: "Guestによるレビューの要約#{n}",
     body: "Guestによるレビューの本文#{n}",
     game_id: n,
-    user_id: 15
+    user_id: 15,
     )
 
     Comment.create(
       body: "Guestによるコメントの本文#{n}",
       game_id: n,
-      user_id: 15
+      user_id: 15,
       )
 
     Favorite.create(
       game_id: n,
-      user_id: 15
+      user_id: 15,
     )
 
     Own.create(
       game_id: n,
-      user_id: 15
+      user_id: 15,
     )
 end
 
@@ -97,7 +100,8 @@ admin_user = User.new(
   email: "admin@example.com", 
   password: "pass_for_admin",
   introduce: "Thank you for your watching my review app, Admin!",
-  admin: true
+  admin: true,
+  icon: File.open("./app/assets/images/seed_user/一花.png"),
   )
 admin_user.skip_confirmation!
 admin_user.save
@@ -113,22 +117,22 @@ admin_user.save
     summary: "Adminによるレビューの要約#{n}",
     body: "Adminによるレビューの本文#{n}",
     game_id: n,
-    user_id: 16
+    user_id: 16,
     )
 
     Comment.create(
       body: "Adminによるコメントの本文#{n}",
       game_id: n,
-      user_id: 16
+      user_id: 16,
       )
 
     Favorite.create(
       game_id: n,
-      user_id: 16
+      user_id: 16,
     )
 
     Own.create(
       game_id: n,
-      user_id: 16
+      user_id: 16,
     )
 end
