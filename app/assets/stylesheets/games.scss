@@ -1,43 +1,100 @@
-.body{
-  min-height: 50vh;
-  position: relative;/*←相対位置*/
-  padding-bottom: 0px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+html {
+  font-size: 62.5%;
+  height: 100%;
 }
 
-header {
-  top: 0;
-  background-color: #fff;
-  width: 100%;
-
-  h1 {
-    margin-left: 40px;
-  }
-}
-
-.main-menu {
-  margin-left: 50px;
-}
-
-.alert {
-  margin-bottom: 0px;
-}
-
-.notice {
-  margin-bottom: 0px;
+body {
+  height: 100%;
+  margin: 0;
 }
 
 .container {
-  margin: 0 auto;
+  width: 100%;
+  margin: 0 10px 0 auto;
+  position: relative;
+  min-height: 100%;
+  padding-left: 0;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
 
-footer{
+li {
+  list-style: none;
+}
+
+.header {
+  background-color:white;
+  height: 70px;
+  font-size: 1.5rem;
+}
+
+.logo_image {
+  width: 250px;
+  float: left;
+  margin: 0;
+}
+
+.logo:hover {
+  color: #0070cc;
+  text-decoration: none;
+}
+
+ul.top_menu {
+  float: right;
+}
+
+.top_menu li {
+  margin-top: 20px;
+  float: left;
+  width: auto;
+}
+
+.top_menu li a {
+  color: gray;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.top_menu li a:hover {
+  color: #0070cc;
+  text-decoration: underline;
+}
+
+.wrapper{
+  background-color: white;
+  text-align: center;
+  margin-top: 5px;
+  padding-bottom: 100px;
+}
+
+.content{
   width: 100%;
-  background-color: blue;
+  margin-left:20px;
+  float: left;
+  font-size: 1.5rem;
+}
+
+.footer{
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  background: #0070cc;
+  display: table;
+}
+.footer p {
+  font-size: 1rem;
   color: #fff;
   text-align: center;
-  padding: 10px 0 5px 0;
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
+  vertical-align: middle;
+  display: table-cell;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }

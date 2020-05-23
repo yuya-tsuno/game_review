@@ -1,34 +1,37 @@
-<h2>PlayStation4 ゲームタイトル一覧</h2>
-
 <%= search_form_for @q do |form| %>
-  <div class="search_field">
-    <%= form.label :title_or_company, "タイトルまたは販売会社" %> : 
-    <%= form.search_field :title_or_company_cont, class: "search_title_or_company_form" %>
-  </div>
+  <div class="form-inline">
+    <div class="form-group">
+      <%= form.label :title_or_company, "タイトルまたは販売会社" %> : 
+      <%= form.search_field :title_or_company_cont, class: "search_title_or_company_form form-control" %>, 
+    </div>
 
-  <div class="search_field">
-    <%= form.label :price %> : 
-    <%= form.number_field :price_gteq, min: 0 %>以上〜
-    <%= form.number_field :price_lt, min: 0, max: 100000 %>未満
-  </div>
+    <div class="form-group">
+      <%= form.label :price, class: 'form-group' %> : 
+      <%= form.number_field :price_gteq, min: 0, class: 'form-control' %>以上〜
+      <%= form.number_field :price_lt, min: 0, max: 100000, class: 'form-control' %>未満
+    </div>
 
-  <div class="search_field">
-    <%= form.label :genre %> : 
-    <%= form.select :genre_eq, Game.genres.map {|k, v| [Game.genres_i18n[k], v]}, include_blank: true %>
-  </div>
-  
-  <div class="search_field">
-    <%= form.label :released_at %> : 
-    <%= form.date_field :released_at_gteq %>〜
-    <%= form.date_field :released_at_lteq %>
-  </div>
+    <br>
 
-  <div class="action_field">
-    <%= form.submit "検索" %>
+    <div class="form-group">
+      <%= form.label :genre, class: 'form-group' %> : 
+      <%= form.select :genre_eq, Game.genres.map {|k, v| [Game.genres_i18n[k], v]}, include_blank: true, class: 'form-control' %>, 
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :released_at, class: 'form-group' %> : 
+      <%= form.date_field :released_at_gteq, class: 'form-control' %>〜
+      <%= form.date_field :released_at_lteq, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "検索", class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
 
 
+<h3>ゲームタイトル一覧</h3>
 <table>
   <tr>
     <th>パッケージ画像</th>
