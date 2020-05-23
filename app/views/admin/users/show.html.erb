@@ -46,7 +46,7 @@
 
     <% @user.favorites.each do |favorite| %>
       <tr class="favorite_row">
-        <td><%= image_tag(game.icon.resize_for_game_icon.url) if favorite.game.icon && favorite.game.icon.url %></td>
+        <td><%= image_tag(favorite.game.icon.resize_for_game_icon.url) if favorite.game.icon && favorite.game.icon.url %></td>
         <td><%= link_to favorite.game.title, admin_game_path(favorite.game_id) %></th>
         <td><%= favorite.game.company %></td>
       </tr>
