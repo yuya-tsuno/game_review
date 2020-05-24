@@ -62,7 +62,7 @@
     <td><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
     <td><%= game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like) / game.reviews.count if game.reviews.present? %>/100点</td>
     <td><%= game.reviews.count %>件のレビュー</td>
-    <td><%= link_to "詳細", game_path(game.id) %></td>
+    <td><%= link_to "詳細", game_path(game.id), class: "btn btn-primary mr-3" %></td>
   </tr>
 <% end %>
 </table>
