@@ -16,16 +16,18 @@ class Game < ApplicationRecord
   enum genre: { action: 1, action_RPG: 2, RPG: 3, adventure: 4, action_adventure: 5, shouting: 6, FPS_TPS: 7, 
                 pazzle: 8, simulation: 9, racing: 10, music: 11, battle: 12, sports: 13, other: 14 
               }
-  
-  ransacker :direction_score do
-    query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
-    Arel.sql(query)
-  end
 
-  ransacker :reviews_count do
-    query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
-    Arel.sql(query)
-  end
+  scope :recent, -> { order(id: :desc).limit(5) }
+  
+  # ransacker :direction_score do
+  #   query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
+  #   Arel.sql(query)
+  # end
+
+  # ransacker :reviews_count do
+  #   query = '(SELECT AVG(reviews.direction) FROM reviews WHERE reviews.game_id = game.id GROUP BY reviews.game_id)'
+  #   Arel.sql(query)
+  # end
 
   # COLUMN_NAME_SEARCH_MAP = {
   #   "a" => [1],

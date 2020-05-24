@@ -29,6 +29,7 @@ li {
   background-color:white;
   height: 70px;
   font-size: 1.5rem;
+  // position: fixed;
 }
 
 .logo_image {
@@ -73,8 +74,8 @@ ul.top_menu {
 
 .content{
   width: 100%;
-  margin-left:20px;
-  float: left;
+  margin: 0 auto;
+  // float: left;
   font-size: 1.5rem;
 }
 
@@ -97,4 +98,13 @@ ul.top_menu {
   content: "";
   display: block;
   clear: both;
+}
+
+.form-inline{
+  padding: 10px;
+  background-color: lightgray;
+}
+
+table{
+  vertical-align: middle;
 }
