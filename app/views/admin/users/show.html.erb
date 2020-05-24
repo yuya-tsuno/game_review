@@ -1,0 +1,75 @@
+<h1><%= @user.name %>の詳細</h1>
+
+<p><strong>ID: </strong><%= @user.id %></p>
+<p><strong>名前: </strong><%= @user.name %></p>
+<p><strong>メールアドレス: </strong><%= @user.email %></p>
+<p><strong>管理者権限: </strong><%= @user.admin %></p>
+<p><strong>自己紹介文: </strong><%= @user.introduce %></p> 
+<p><strong>アイコン: </strong><%= @user.icon.url %></p>
+<p><%= image_tag(@user.icon.resize_for_user_icon.url) if @user.icon && @user.icon.url %></p>
+
+<%= link_to '編集へ', edit_user_path(@user.id) %>
+<%= link_to 'ユーザー一覧へ', users_path %>
+
+<% if @user.reviews.present? %>
+  <p>---------------------------------------------------------------------------------------------------</p>
+  <p><%= @user.name %>さんが投稿したゲームレビュー一覧</p>
+  <table>
+    <tr>
+      <th>一言</th>
+      <th>レビューしたゲームタイトル名</th>
+      <th>総合点</th>
+    </tr>
+
+    <% @user.reviews.each do |review| %>
+      <tr class="review_row">
+        <td><%= review.summary %></th>
+        <td><%= review.game.title %>へのレビュー</td>
+        <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
+        <td><%= link_to "レビュー詳細", review_path(review.id) %></td>
+        <td><%= link_to "レビュー編集", edit_review_path(review.id) %></td>
+        <td><%= link_to 'レビュー削除', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<% if @user.favorites.present? %>
+  <p>---------------------------------------------------------------------------------------------</p>
+  <p><%= @user.name %>さんの気になっているゲーム一覧</p>
+  <table>
+    <tr>
+      <th>パッケージ</th>
+      <th>ゲームタイトル</th>
+      <th>販売会社</th>
+    </tr>
+
+    <% @user.favorites.each do |favorite| %>
+      <tr class="favorite_row">
+        <td><%= image_tag(favorite.game.icon.resize_for_game_icon.url) if favorite.game.icon && favorite.game.icon.url %></td>
+        <td><%= link_to favorite.game.title, admin_game_path(favorite.game_id) %></th>
+        <td><%= favorite.game.company %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<% if @user.owns.present? %>
+  <p>----------------------------------------------------------------------------------------------</p>
+  <p><%= @user.name %>さんの持っているゲーム一覧</p>
+  <table>
+    <tr>
+      <th>パッケージ</th>
+      <th>ゲームタイトル</th>
+      <th>販売会社</th>
+    </tr>
+
+    <% @user.owns.each do |own| %>
+      <tr class="own_row">
+        <td><%= image_tag(own.game.icon.resize_for_game_icon.url) if own.game.icon && own.game.icon.url %></td>
+        <td><%= link_to own.game.title, admin_game_path(own.game_id) %></th>
+        <td><%= own.game.company %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>  

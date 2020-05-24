@@ -1,0 +1,21 @@
+<h4>コメント一覧</h4>
+
+<table>
+  <tr>
+    <th>コメント本文</th>
+    <th>コメントしたユーザー</th>
+    <th>コメントされたゲームタイトル</th>
+    <th></th>
+  </tr>
+
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment.body %></td>
+    <td><%= link_to "#{comment.user.name}さん", admin_user_path(comment.user_id) %>による</td>
+    <td><%= link_to comment.game.title, admin_game_path(comment.game_id) %>へのコメント
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'トップ画面に戻る', admin_root_path, class: "btn btn-primary mr-3"  %>

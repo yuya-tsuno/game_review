@@ -1,3 +1,110 @@
-// Place all the styles related to the games controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 10px 0 auto;
+  position: relative;
+  min-height: 100%;
+  padding-left: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  background-color:white;
+  height: 70px;
+  font-size: 1.5rem;
+  // position: fixed;
+}
+
+.logo_image {
+  width: 250px;
+  float: left;
+  margin: 0;
+}
+
+.logo:hover {
+  color: #0070cc;
+  text-decoration: none;
+}
+
+ul.top_menu {
+  float: right;
+}
+
+.top_menu li {
+  margin-top: 20px;
+  float: left;
+  width: auto;
+}
+
+.top_menu li a {
+  color: gray;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
+
+.top_menu li a:hover {
+  color: #0070cc;
+  text-decoration: underline;
+}
+
+.wrapper{
+  background-color: white;
+  text-align: center;
+  margin-top: 5px;
+  padding-bottom: 100px;
+}
+
+.content{
+  width: 100%;
+  margin: 0 auto;
+  // float: left;
+  font-size: 1.5rem;
+}
+
+.footer{
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  background: #0070cc;
+  display: table;
+}
+.footer p {
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.form-inline{
+  padding: 10px;
+  background-color: lightgray;
+}
+
+table{
+  vertical-align: middle;
+}

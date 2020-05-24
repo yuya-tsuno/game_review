@@ -6,7 +6,10 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.integer :story, null: false, default: 10
       t.integer :volume, null: false, default: 10
       t.integer :like, null: false, default: 10
-      t.text :body
+      t.string :summary, null: false
+      t.text :body, null: false
+      t.integer :game_id, null: false
+      t.integer :user_id, null: false
             
       t.timestamps
     end

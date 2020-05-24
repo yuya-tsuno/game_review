@@ -16,25 +16,25 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
-    t.integer "game_id"
-    t.integer "user_id"
+    t.text "body", null: false
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "game_id"
-    t.integer "user_id"
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "title"
-    t.string "company"
-    t.integer "genre"
-    t.integer "price"
+    t.string "title", null: false
+    t.string "company", null: false
+    t.integer "genre", null: false
+    t.integer "price", default: 5000, null: false
     t.date "released_at"
     t.text "story"
     t.text "icon"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
   end
 
   create_table "owns", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,13 +55,16 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
     t.integer "story", default: 10, null: false
     t.integer "volume", default: 10, null: false
     t.integer "like", default: 10, null: false
-    t.text "body"
+    t.string "summary", null: false
+    t.text "body", null: false
+    t.integer "game_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "introduce"
     t.text "icon"
     t.boolean "admin", default: false, null: false
@@ -67,6 +72,16 @@ ActiveRecord::Schema.define(version: 2020_05_15_072405) do
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

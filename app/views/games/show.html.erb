@@ -1,0 +1,57 @@
+<h1><%= @game.title%>の詳細</h1>
+
+<p><strong>ID: </strong><%= @game.id %></p>
+<p><strong>タイトル: </strong><%= @game.title %></p>
+<p><strong>制作会社: </strong><%= @game.company %></p>
+<p><strong>ジャンル: </strong><%= @game.genre_i18n %></p>
+<p><strong>価格: </strong><%= @game.price %>円</p> 
+<p><strong>発売日: </strong><%= @game.released_at %></p>
+<p><strong>あらすじ： </strong><%= @game.story %></p>
+<p><strong>パッケージ: </strong><%= @game.icon.url if @game.icon && @game.icon.url%></p>
+<p><%= image_tag(@game.icon.resize_for_game_icon.url) if @game.icon && @game.icon.url %></p>
+
+<% if @favorite.present? %>
+  <%= link_to '気になるを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to '気になる', favorites_path(game_id: @game.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+
+<% if @own.present? %>
+  <%= link_to '持ってるを解除する', own_path(id: @own.id), method: :delete, class: 'btn btn-danger' %>
+<% else %>
+  <%= link_to '持ってる', owns_path(game_id: @game.id), method: :post, class: 'btn btn-primary' %>
+<% end %>
+
+<h4><%= @game.title%>に対する<%= @game.reviews.count %>件のレビュー</h4>
+<table>
+  <tr>
+    <th>レビューしたユーザー</th>
+    <th>一言</th>
+    <th>レビュー総合点</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @game.reviews.each do |review| %>
+    <tr>
+      <td><%= review.user.name %>さんによる</td>
+      <td><%= review.summary %></td>
+      <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
+      <td><%= link_to "詳細", review_path(review.id), class: "btn btn-primary mr-3"  %></td>
+      <% if current_user == review.user %>
+        <td><%= link_to "編集", edit_review_path(review.id), class: "btn btn-primary mr-3" %></td>
+        <td><%= link_to '削除', review_path(review.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+
+<h4><%= @game.title %>に対するコメント・質問</h4>
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, game: @game, user: current_user } %>
+</div>
+<%= render partial: 'comments/form', locals: { comment: @comment, game: @game, user: current_user } %>
+
+<%= link_to 'ゲーム一覧へ', games_path %>

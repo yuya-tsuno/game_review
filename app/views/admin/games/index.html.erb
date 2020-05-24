@@ -1,0 +1,74 @@
+<%= search_form_for @q do |form| %>
+  <div class="form-inline">
+    <div class="form-group">
+      <%= form.label :title_or_company, "タイトルまたは販売会社" %> : 
+      <%= form.search_field :title_or_company_cont, class: "search_title_or_company_form form-control" %>, 
+    </div>
+
+    <div class="form-group">
+      <%= form.label :price, class: 'form-group' %> : 
+      <%= form.number_field :price_gteq, min: 0, class: 'form-control' %>以上〜
+      <%= form.number_field :price_lt, min: 0, max: 100000, class: 'form-control' %>未満
+    </div>
+
+    <br>
+
+    <div class="form-group">
+      <%= form.label :genre, class: 'form-group' %> : 
+      <%= form.select :genre_eq, Game.genres.map {|k, v| [Game.genres_i18n[k], v]}, include_blank: true, class: 'form-control' %>, 
+    </div>
+    
+    <div class="form-group">
+      <%= form.label :released_at, class: 'form-group' %> : 
+      <%= form.date_field :released_at_gteq, class: 'form-control' %>〜
+      <%= form.date_field :released_at_lteq, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "検索", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+
+<h3>ゲームタイトル一覧</h3>
+<table>
+  <tr>
+    <th>パッケージ画像</th>
+    <th><%= sort_link(@q, :title, "タイトル名") %></th>
+    <th><%= sort_link(@q, :company, "販売会社") %></th>
+    <th><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
+
+    <th>グラフィック・サウンド</th>
+    <th>操作性・ロード</th>
+    <th>ストーリー・世界観</th>
+    <th>ボリューム・やりこみ要素</th>
+    <th>個人的なハマり度</th>
+    <th>総合点数</th>
+    <th>レビュー件数</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %></td>
+      <td><%= game.title %></td>
+      <td><%= game.company %></td>
+      <td><%= game.released_at %></td>
+      <td><%= game.reviews.sum(:direction) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
+      <td><%= game.reviews.sum(:operability) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
+      <td><%= game.reviews.sum(:story) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
+      <td><%= game.reviews.sum(:volume) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
+      <td><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
+      <td><%= game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like) / game.reviews.count if game.reviews.present? %>/100点</td>
+      <td><%= game.reviews.count %>件のレビュー</td>
+      <td><%= link_to "詳細", admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
+      <td><%= link_to "編集", edit_admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
+      <td><%= link_to "削除", admin_game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @games %>

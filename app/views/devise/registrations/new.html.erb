@@ -4,6 +4,11 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
@@ -25,5 +30,10 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+
+<div>
+  <%= link_to 'Sign in as a guest', users_sign_in_as_a_guest_path, method: :post %> |
+  <%= link_to 'Sign in as an Admin', users_sign_in_as_an_admin_path, method: :post %> 
+</div>
 
 <%= render "devise/shared/links" %>

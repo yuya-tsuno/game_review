@@ -1,0 +1,58 @@
+<%= form_with(model: @review, local: true) do |form| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= @review.errors.count %>件のエラーがあります。</h3>
+      <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="filed">
+    <%= form.label :game_id, "ゲームタイトル" %>
+    <%= form.collection_select :game_id, Game.all, :id, :title, {selected: @review.game_id }%>
+  </div>
+
+  <%= link_to "レビューしたいゲームがない場合...", new_game_path %>
+  
+  <div class="field">
+    <%= form.label :direction %>
+    <%= form.number_field :direction, min: 0, max: 20 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :operability %>
+    <%= form.number_field :operability, min: 0, max: 20 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :story %>
+    <%= form.number_field :story, min: 0, max: 20 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :volume %>
+    <%= form.number_field :volume, min: 0, max: 20 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :like %>
+    <%= form.number_field :like, min: 0, max: 20 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :summary %>
+    <%= form.text_field :summary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
+
+<%= link_to "ゲーム一覧", games_path, class: "btn btn-primary mr-3" %>
