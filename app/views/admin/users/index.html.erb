@@ -2,13 +2,15 @@
 
 <table>
   <tr>
+    <th>アイコン</th>
     <th>ID</th>
-    <th>Name</th>
+    <th>ユーザーネーム</th>
     <th colspan="3"></th>
   </tr>
 
   <% @users.each do |user| %>
     <tr>
+      <td><%= image_tag(user.icon.resize_for_user_icon.url) if user.icon && user.icon.url %></td>
       <td><%= user.id %></td>
       <td><%= user.name %></td>
       <td><%= link_to '詳細', admin_user_path(user), class: "btn btn-primary mr-3" %></td>
