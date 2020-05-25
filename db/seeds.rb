@@ -182,164 +182,164 @@ seed_users.each do |seed_user|
     admin: false,
     icon: File.open("./app/assets/images/seed_users/#{seed_user}.jpg")
     )
-  # user.skip_confirmation!
+  user.skip_confirmation!
   user.save
 end
   
-# ゲストユーザー用シードデータ
-guest_user = User.new(
-  # id: 16,
-  name: "ゲスト", 
-  email: "guest@example.com", 
-  password: "password_for_guest",
-  introduce: "ゲストの自己紹介です。Thank you for your watching my review app!",
-  admin: false,
-  icon: File.open("./app/assets/images/seed_users/ゲスト.png"),
-  )
+# # ゲストユーザー用シードデータ
+# guest_user = User.new(
+#   # id: 16,
+#   name: "ゲスト", 
+#   email: "guest@example.com", 
+#   password: "password_for_guest",
+#   introduce: "ゲストの自己紹介です。Thank you for your watching my review app!",
+#   admin: false,
+#   icon: File.open("./app/assets/images/seed_users/ゲスト.png"),
+#   )
 # guest_user.skip_confirmation!
-guest_user.save
+# guest_user.save
   
-# ゲストユーザー（管理者）用シードデータ
-admin_user = User.new(
-  # id: 17,
-  name: "アドミン", 
-  email: "admin@example.com", 
-  password: "password_for_admin",
-  introduce: "アドミンの自己紹介です。Thank you for your watching my review app!",
-  admin: true,
-  icon: File.open("./app/assets/images/seed_users/アドミン.png"),
-  )
+# # ゲストユーザー（管理者）用シードデータ
+# admin_user = User.new(
+#   # id: 17,
+#   name: "アドミン", 
+#   email: "admin@example.com", 
+#   password: "password_for_admin",
+#   introduce: "アドミンの自己紹介です。Thank you for your watching my review app!",
+#   admin: true,
+#   icon: File.open("./app/assets/images/seed_users/アドミン.png"),
+#   )
 # admin_user.skip_confirmation!
-admin_user.save
+# admin_user.save
     
-# ゲーム1~15のレビュー等を作成
-n = 0
-15.times do
-  n = n + 1
-  Review.create(
-    direction: n,
-    operability: n,
-    story: n,
-    volume: n,
-    like: n,
-    summary: "レビューの見出し",
-    body: "レビュー本文レビュー本文レビュー本文レビュー本文",
-    game_id: n,
-    user_id: n,
-    )
+# # ゲーム1~15のレビュー等を作成
+# n = 0
+# 15.times do
+#   n = n + 1
+#   Review.create(
+#     direction: n,
+#     operability: n,
+#     story: n,
+#     volume: n,
+#     like: n,
+#     summary: "レビューの見出し",
+#     body: "レビュー本文レビュー本文レビュー本文レビュー本文",
+#     game_id: n,
+#     user_id: n,
+#     )
 
-  Comment.create(
-    body: "コメント本文コメント本文",
-    game_id: 16-n,
-    user_id: n,
-    )
+#   Comment.create(
+#     body: "コメント本文コメント本文",
+#     game_id: 16-n,
+#     user_id: n,
+#     )
     
-  Favorite.create(
-    game_id: 16-n,
-    user_id: n,
-    )  
+#   Favorite.create(
+#     game_id: 16-n,
+#     user_id: n,
+#     )  
       
-  Own.create(
-    game_id: n,
-    user_id: n,
-    )
-  end
+#   Own.create(
+#     game_id: n,
+#     user_id: n,
+#     )
+#   end
 
-# ゲーム16~30のレビュー等を作成
-n = 0
-15.times do
-  n = n + 1
-  Review.create(
-    direction: n+5,
-    operability: n+5,
-    story: n+5,
-    volume: n+5,
-    like: n+5,
-    summary: "レビューの見出し",
-    body: "レビュー本文レビュー本文レビュー本文レビュー本文",
-    game_id: n+15,
-    user_id: n,
-    )
+# # ゲーム16~30のレビュー等を作成
+# n = 0
+# 15.times do
+#   n = n + 1
+#   Review.create(
+#     direction: n+5,
+#     operability: n+5,
+#     story: n+5,
+#     volume: n+5,
+#     like: n+5,
+#     summary: "レビューの見出し",
+#     body: "レビュー本文レビュー本文レビュー本文レビュー本文",
+#     game_id: n+15,
+#     user_id: n,
+#     )
 
-  Comment.create(
-    body: "コメント本文コメント本文",
-    game_id: 31-n,
-    user_id: n,
-    )
+#   Comment.create(
+#     body: "コメント本文コメント本文",
+#     game_id: 31-n,
+#     user_id: n,
+#     )
 
-  Favorite.create(
-    game_id: 31-n,
-    user_id: n,
-  )  
+#   Favorite.create(
+#     game_id: 31-n,
+#     user_id: n,
+#   )  
 
-  Own.create(
-    game_id: n+15,
-    user_id: n,
-  )
-end
+#   Own.create(
+#     game_id: n+15,
+#     user_id: n,
+#   )
+# end
 
-# ゲストのレビュー等を作成
-n = 0
-15.times do
-  n = n + 1
-  Review.create(
-    direction: n+5,
-    operability: n+5,
-    story: n+5,
-    volume: n+5,
-    like: n+5,
-    summary: "レビューの見出し",
-    body: "レビュー本文レビュー本文レビュー本文レビュー本文",
-    game_id: n,
-    user_id: 16,
-    )
+# # ゲストのレビュー等を作成
+# n = 0
+# 15.times do
+#   n = n + 1
+#   Review.create(
+#     direction: n+5,
+#     operability: n+5,
+#     story: n+5,
+#     volume: n+5,
+#     like: n+5,
+#     summary: "レビューの見出し",
+#     body: "レビュー本文レビュー本文レビュー本文レビュー本文",
+#     game_id: n,
+#     user_id: 16,
+#     )
     
-  Comment.create(
-    body: "コメント本文コメント本文",
-    game_id: n+15,
-    user_id: 16,
-    )
+#   Comment.create(
+#     body: "コメント本文コメント本文",
+#     game_id: n+15,
+#     user_id: 16,
+#     )
 
-  Favorite.create(
-    game_id: n+15,
-    user_id: 16,
-    )  
+#   Favorite.create(
+#     game_id: n+15,
+#     user_id: 16,
+#     )  
     
-  Own.create(
-    game_id: n,
-    user_id: 16,
-    )
-end
+#   Own.create(
+#     game_id: n,
+#     user_id: 16,
+#     )
+# end
 
-# アドミンのレビュー等を作成
-n = 0
-15.times do
-  n = n + 1
-  Review.create(
-    direction: n,
-    operability: n,
-    story: n,
-    volume: n,
-    like: n,
-    summary: "レビューの見出し",
-    body: "レビュー本文レビュー本文レビュー本文レビュー本文",
-    game_id: n+15,
-    user_id: 17
-    )
+# # アドミンのレビュー等を作成
+# n = 0
+# 15.times do
+#   n = n + 1
+#   Review.create(
+#     direction: n,
+#     operability: n,
+#     story: n,
+#     volume: n,
+#     like: n,
+#     summary: "レビューの見出し",
+#     body: "レビュー本文レビュー本文レビュー本文レビュー本文",
+#     game_id: n+15,
+#     user_id: 17
+#     )
 
-  Comment.create(
-    body: "コメント本文コメント本文",
-    game_id: n,
-    user_id: 17,
-    )
+#   Comment.create(
+#     body: "コメント本文コメント本文",
+#     game_id: n,
+#     user_id: 17,
+#     )
 
-  Favorite.create(
-    game_id: n,
-    user_id: 17,
-    )  
+#   Favorite.create(
+#     game_id: n,
+#     user_id: 17,
+#     )  
 
-  Own.create(
-    game_id: n+15,
-    user_id: 17,
-    )
+#   Own.create(
+#     game_id: n+15,
+#     user_id: 17,
+#     )
 end

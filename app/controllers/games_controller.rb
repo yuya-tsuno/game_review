@@ -15,7 +15,8 @@ class GamesController < ApplicationController
     elsif params[:order_by_like] # ハマり度点数順（降順）
       @games = Game.all.includes(:reviews).order("reviews.like desc").page(params[:page]).per(10)
     elsif params[:order_by_sum] # ハマり度点数順（降順）
-      @games = Game.select(‘games.*’, ‘sum(reviews.direction + operability + story + volume + like) AS reviews’).left_joins(:reviews).group(‘games.id’).order(‘reviews desc’)
+      @games = Game.select(‘games.*’, ‘sum(reviews.direction) + sum(reviews.operability) + sum(reviews.story) + sum(reviews.volume) + sum(reviews.like) AS reviews’)
+      .left_joins(:reviews).group(‘games.id’).order(‘reviews desc’)
     elsif params[:order_by_reviews] # レビュー個数順（降順）
       @games = Game.select('games.*', 'count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(10)
     else # 追加順（デフォルト、降順）
