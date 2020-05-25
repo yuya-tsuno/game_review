@@ -5,8 +5,22 @@ class Admin::GamesController < ApplicationController
   
   def index
     @q = Game.ransack(params[:q])
-    @q.sorts = 'created_at desc' if @q.sorts.empty?
-    @games = @q.result(distinct: true).page(params[:page]).per(10)
+    if params[:order_by_direction] # 演出点数順（降順）
+      @games = Game.all.includes(:reviews).order("reviews.direction desc").page(params[:page]).per(10)
+    elsif params[:order_by_operability] # 操作性点数順（降順）
+      @games = Game.all.includes(:reviews).order("reviews.operability desc").page(params[:page]).per(10)
+    elsif params[:order_by_story] # ストーリー点数順（降順）
+      @games = Game.all.includes(:reviews).order("reviews.story desc").page(params[:page]).per(10)
+    elsif params[:order_by_volume] # ボリューム点数順（降順）
+      @games = Game.all.includes(:reviews).order("reviews.volume desc").page(params[:page]).per(10)
+    elsif params[:order_by_like] # ハマり度点数順（降順）
+      @games = Game.all.includes(:reviews).order("reviews.like desc").page(params[:page]).per(10)
+    elsif params[:order_by_reviews] # レビュー個数順（降順）
+      @games = Game.select('games.*', 'count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(10)
+    else # 追加順（デフォルト、降順）
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
+      @games = @q.result(distinct: true).page(params[:page]).per(10)
+    end
   end
   
   def new

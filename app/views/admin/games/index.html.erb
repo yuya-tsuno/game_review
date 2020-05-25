@@ -39,13 +39,13 @@
     <th><%= sort_link(@q, :company, "販売会社") %></th>
     <th><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
 
-    <th>グラフィック・サウンド</th>
-    <th>操作性・ロード</th>
-    <th>ストーリー・世界観</th>
-    <th>ボリューム・やりこみ要素</th>
-    <th>個人的なハマり度</th>
+    <th><%= link_to "グラフィック・サウンド", games_path(order_by_direction: true) %></th>
+    <th><%= link_to "操作性・ロード", games_path(order_by_operability: true) %></th>
+    <th><%= link_to "ストーリー・世界観", games_path(order_by_story: true) %></th>
+    <th><%= link_to "ボリューム・やりこみ要素", games_path(order_by_volume: true) %></th>
+    <th><%= link_to "個人的なハマり度", games_path(order_by_like: true) %></th>
     <th>総合点数</th>
-    <th>レビュー件数</th>
+    <th><%= link_to "レビュー件数", games_path(order_by_reviews: true) %></th>
     <th></th>
     <th></th>
     <th></th>
