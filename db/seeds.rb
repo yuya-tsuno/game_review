@@ -182,7 +182,7 @@ seed_users.each do |seed_user|
     admin: false,
     icon: File.open("./app/assets/images/seed_users/#{seed_user}.jpg")
     )
-  user.skip_confirmation!
+  # user.skip_confirmation!
   user.save
 end
   
@@ -196,7 +196,7 @@ guest_user = User.new(
   admin: false,
   icon: File.open("./app/assets/images/seed_users/ゲスト.png"),
   )
-guest_user.skip_confirmation!
+# guest_user.skip_confirmation!
 guest_user.save
   
 # ゲストユーザー（管理者）用シードデータ
@@ -209,7 +209,7 @@ admin_user = User.new(
   admin: true,
   icon: File.open("./app/assets/images/seed_users/アドミン.png"),
   )
-admin_user.skip_confirmation!
+# admin_user.skip_confirmation!
 admin_user.save
     
 # ゲーム1~15のレビュー等を作成
