@@ -44,7 +44,7 @@
     <th><%= link_to "ストーリー・世界観", games_path(order_by_story: true) %></th>
     <th><%= link_to "ボリューム・やりこみ要素", games_path(order_by_volume: true) %></th>
     <th><%= link_to "個人的なハマり度", games_path(order_by_like: true) %></th>
-    <th>総合点数</th>
+    <th><%= link_to "総合点数", games_path(order_by_sum: true) %></th>
     <th><%= link_to "レビュー件数", games_path(order_by_reviews: true) %></th>
     <th></th>
     <th></th>
