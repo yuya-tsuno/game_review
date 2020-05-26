@@ -1,4 +1,4 @@
-<%= form_with(model: @review, local: true) do |form| %>
+<%= form_with(model: [:admin, @review], local: true) do |form| %>
 
   <% if @review.errors.any? %>
     <div id="error_explanation">

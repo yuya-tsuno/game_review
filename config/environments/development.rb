@@ -11,8 +11,8 @@ Rails.application.configure do
 
   # Show full error reports.
   #エラーメッセージを見る際（開発中）はtrueにしserver再立ち上げ
-  # config.consider_all_requests_local = true
-  config.consider_all_requests_local = false
+  config.consider_all_requests_local = true
+  # config.consider_all_requests_local = false
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.

@@ -1,6 +1,6 @@
 <h2>新規ユーザー登録</h2>
 
-<%= form_with(model: @user, local: true) do |form| %>
+<%= form_with(model: [:admin, @user], local: true) do |form| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h3><%= @user.errors.count %>件のエラーがあります。</h3>

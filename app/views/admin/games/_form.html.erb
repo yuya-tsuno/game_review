@@ -1,4 +1,4 @@
-<%= form_with(model: @game, local: true) do |form| %>
+<%= form_with(model: [:admin, @game], local: true) do |form| %>
   <% if @game.errors.any? %>
     <div id="error_explanation">
       <h3><%= @game.errors.count %>件のエラーがあります。</h3>
