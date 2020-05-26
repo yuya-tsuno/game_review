@@ -7,19 +7,19 @@ class Admin::GamesController < ApplicationController
     # binding.pry
     @q = Game.ransack(params[:q])
     if params[:order_by_direction] # 演出点数順（降順）
-      @games = Game.select('games.*', 'sum(reviews.direction) / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
+      @games = Game.select('games.*', 'sum(reviews.direction) * 5 / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
       params.delete("order_by_direction")
     elsif params[:order_by_operability] # 操作性点数順（降順）
-      @games = Game.select('games.*', 'sum(reviews.operability) / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
+      @games = Game.select('games.*', 'sum(reviews.operability) * 5 / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
       params.delete("order_by_operability")
     elsif params[:order_by_story] # ストーリー点数順（降順）
-      @games = Game.select('games.*', 'sum(reviews.story) / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
+      @games = Game.select('games.*', 'sum(reviews.story) * 5 / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
       params.delete("order_by_story")
     elsif params[:order_by_volume] # ボリューム点数順（降順）
-      @games = Game.select('games.*', 'sum(reviews.volume) / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
+      @games = Game.select('games.*', 'sum(reviews.volume) * 5 / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
       params.delete("order_by_volume")
     elsif params[:order_by_like] # ハマり度点数順（降順）
-      @games = Game.select('games.*', 'sum(reviews.like) / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
+      @games = Game.select('games.*', 'sum(reviews.like) * 5 / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)
       params.delete("order_by_like")
     elsif params[:order_by_sum] # 合計点数順（降順）
       @games = Game.select('games.*', '(sum(reviews.direction) + sum(reviews.operability) + sum(reviews.story) + sum(reviews.volume) + sum(reviews.like)) / count(reviews.id) AS reviews')

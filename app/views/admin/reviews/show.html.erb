@@ -6,7 +6,7 @@
 <p><strong>ストーリー・世界観: </strong><%= @review.story %>点/20点</p>
 <p><strong>ゲームボリューム: </strong><%= @review.volume %>点/20点</p>
 <p><strong>ハマり度: </strong><%= @review.like %>点/20点</p>
-<p><strong>総合点: </strong><%= @review.direction + @review.direction + @review.operability + @review.story + @review.volume %>点/100点</p>
+<p><strong>総合点: </strong><%= @review.direction + @review.operability + @review.story + @review.volume + @review.like %>点/100点</p>
 <p><strong>コメント: </strong><%= @review.body %></p>
 
 <%= link_to 'レビュー一覧', admin_reviews_path, class: "btn btn-primary mr-3"%>

@@ -41,7 +41,7 @@
     <td><%= review.summary %></td>
     <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
     <td><%= link_to "レビュー詳細", admin_review_path(review.id), class: 'btn btn-primary' %></td>
-    <td><%= link_to "レビュー削除", admin_review_path(review.id), method: :post, class: 'btn btn-primary' %></td>
+    <td><%= link_to "レビュー削除", admin_review_path(review.id), method: :delete, class: 'btn btn-primary',data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
 <% end %>
 </table>
