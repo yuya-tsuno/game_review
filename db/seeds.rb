@@ -171,7 +171,8 @@ seed_users.each do |seed_user|
     password: "password_for_user#{n}",
     introduce: "#{seed_user}の自己紹介です。",
     admin: false,
-    # icon: File.open("./app/assets/images/seed_users/#{seed_user}.jpg")
+    # icon: File.open("./app/assets/images/seed_users/#{seed_user}.jpg"),
+    confirmed_at: Time.now,
   )
   user.skip_confirmation!
   user.save
@@ -186,6 +187,7 @@ guest_user = User.new(
   introduce: "ゲストの自己紹介です。Thank you for your watching my review app!",
   admin: false,
   # icon: File.open("./app/assets/images/seed_users/ゲスト.png"),
+  confirmed_at: Time.now,
 )
 guest_user.skip_confirmation!
 guest_user.save
@@ -199,6 +201,7 @@ admin_user = User.new(
   introduce: "アドミンの自己紹介です。Thank you for your watching my review app!",
   admin: true,
   # icon: File.open("./app/assets/images/seed_users/アドミン.png"),
+  confirmed_at: Time.now,
 )
 admin_user.skip_confirmation!
 admin_user.save
