@@ -11,33 +11,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>:
+    <%= form.label :title %> : 
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :company %>:
+    <%= form.label :company %> : 
     <%= form.text_field :company %>
   </div>
       
   <div class="field">
-    <%= form.label :genre %>:
+    <%= form.label :genre %> : 
     <%= form.select :genre, Game.genres.keys.map {|k| [I18n.t("enums.game.genre.#{k}"), k]} %>
   </div>
   
   <div class="field">
-    <%= form.label :price %>:
-    <%= form.number_field :price, min: 0, max: 100000 %>
+    <%= form.label :price %> : 
+    <%= form.number_field :price, min: 0, max: 100000 %>円
   </div>
   
   <div class="field">
-    <%= form.label :released_at %>:
+    <%= form.label :released_at %> : 
     <%= form.date_select :released_at %>
   </div>
   
   <div class="field">
-    <%= form.label :story %>
-    <%= form.text_area :story %>
+    <div><%= form.label :story %></div>
+    <div><%= form.text_area :story %></div>
   </div>
   
   <div class="field">
@@ -47,7 +47,7 @@
     <%= form.hidden_field :icon_cache %>
   </div>
 
-  <div class="field_action">
+  <div class="action field">
     <%= form.submit class: "btn btn-primary mr-3" %>
   </div>
 

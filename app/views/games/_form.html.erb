@@ -27,7 +27,7 @@
   
   <div class="field">
     <%= form.label :price %> :
-    <%= form.number_field :price, min: 0, max: 100000 %>
+    <%= form.number_field :price, min: 0, max: 100000 %>円
   </div>
   
   <div class="field">
@@ -36,8 +36,8 @@
   </div>
   
   <div class="field">
-    <%= form.label :story %>: 
-    <%= form.text_area :story %>
+    <div><%= form.label :story %></div>
+    <div><%= form.text_area :story %></div>
   </div>
   
   <div class="field">
@@ -47,7 +47,9 @@
     <%= form.hidden_field :icon_cache %>
   </div>
 
-  <%= form.submit class: "btn btn-primary mr-3" %>
+  <div class="action field">
+    <%= form.submit class: "btn btn-primary mr-3" %>
+  </div>
 <% end %>
 
 <%= link_to "ゲーム一覧", games_path, class: "btn btn-primary mr-3" %>

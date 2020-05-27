@@ -12,48 +12,48 @@
   <% end %>
 
   <div class="filed">
-    <%= form.label :game_id %>
+    <%= form.label :game_id, "ゲームタイトル" %> : 
     <%= form.collection_select :game_id, Game.all, :id, :title, {selected: @review.game_id}%>
   </div>
 
     <%= link_to "レビューしたいゲームがない場合...", new_admin_game_path %>
 
   <div class="field">
-    <%= form.label :direction %>
+    <%= form.label :direction %> : 
     <%= form.number_field :direction, min: 0, max: 20 %>
   </div>
 
   <div class="field">
-    <%= form.label :operability %>
+    <%= form.label :operability %> : 
     <%= form.number_field :operability, min: 0, max: 20 %>
   </div>
 
   <div class="field">
-    <%= form.label :story %>
+    <%= form.label :story %> : 
     <%= form.number_field :story, min: 0, max: 20 %>
   </div>
 
   <div class="field">
-    <%= form.label :volume %>
+    <%= form.label :volume %> : 
     <%= form.number_field :volume, min: 0, max: 20 %>
   </div>
 
   <div class="field">
-    <%= form.label :like %>
+    <%= form.label :like %> : 
     <%= form.number_field :like, min: 0, max: 20 %>
   </div>
 
   <div class="field">
-    <%= form.label :summary %>
+    <%= form.label :summary %> : 
     <%= form.text_field :summary %>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <div><%= form.label :body %></div>
+    <div><%= form.text_area :body %></div>
   </div>
 
-  <div class="action">
+  <div class="action field">
     <%= form.submit class: "btn btn-primary mr-3" %>
   </div>
 
