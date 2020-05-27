@@ -4,7 +4,7 @@ RSpec.describe 'ユーザー管理機能', type: :feature do
   before do
     @game = Game.create(title: "title", company: "company", price: 5000, genre: 5, released_at: "2020-05-05", story: "story", icon: "icon_URL")
     @user= User.new(name: "name", introduce: "introduce", icon: "icon_URL", admin: false, email: "test@e.mail", password: "password")
-    @user.skip_confirmation!
+    # @user.skip_confirmation!
     @user.save  
   end
   
@@ -12,7 +12,7 @@ RSpec.describe 'ユーザー管理機能', type: :feature do
     visit new_user_session_path
     fill_in "メールアドレス", with: @user.email
     fill_in "パスワード", with: @user.password
-    click_on 'Log in'
+    find(".login_button").click
   end
 
   feature 'サインイン（ユーザー登録）画面' do
@@ -37,13 +37,12 @@ RSpec.describe 'ユーザー管理機能', type: :feature do
     context '自分（current_user）以外のユーザの編集ページ（user#edit）にアクセスした場合' do
       it 'トップページに移動' do
         @user2= User.new(name: "name2", introduce: "introduce2", icon: "icon_URL2", admin: false, email: "test2@e.mail", password: "password2")
-        @user2.skip_confirmation!
-        @user2.save  
-        
+        # @user2.skip_confirmation!
+        @user2.save
         log_in #@user2としてだはなく、@userとしてログインします
         visit edit_user_path(@user2.id)
         expect(page).to have_content 'あなたのアカウントではアクセス権限がありません'
-        expect(page).to have_content 'PlayStation4 ゲームタイトル一覧'
+        expect(page).to have_content 'ゲームタイトル一覧'
         # save_and_open_page
       end
     end

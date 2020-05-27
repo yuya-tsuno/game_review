@@ -4,14 +4,14 @@ RSpec.describe 'コメント管理機能', type: :feature do
   before do
     @game = Game.create(title: "title", company: "company", price: 5000, genre: 5, released_at: "2020-05-05", story: "story", icon: "icon_URL")
     @user= User.new(name: "name", introduce: "introduce", icon: "icon_URL", admin: false, email: "test@e.mail", password: "password")
-    @user.skip_confirmation!
+    # @user.skip_confirmation!
     @user.save  
 
     # ログインします。
     visit new_user_session_path
     fill_in "メールアドレス", with: @user.email
     fill_in "パスワード", with: @user.password
-    click_on 'Log in'
+    find(".login_button").click
   end
   
   feature 'ゲーム詳細画面' do
@@ -19,8 +19,9 @@ RSpec.describe 'コメント管理機能', type: :feature do
       it '新規コメントが保存されること' do
         visit game_path(@game.id)
         pending 'なぜかコメント入力フォームが認識されないので保留（機能自体は動く）'
-        fill_in "コメント", with: "テストコメント"
+        # find("コメント").set("テストコメント")
         # find(".comment_area").set("テストコメント")
+        # fill_in "comment_area", with: "テストコメント"
         # save_and_open_page
         click_on 'コメントする'
         expect(page).to have_content "テストコメント"

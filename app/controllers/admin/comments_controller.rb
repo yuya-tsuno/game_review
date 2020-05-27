@@ -15,7 +15,7 @@ class Admin::CommentsController < ApplicationController
       if @comment.save
         format.js { render :index }
       else
-        format.html { redirect_to admin_game_path(@game), notice: '投稿できませんでした...' }
+        format.html { redirect_to admin_game_path(@game.id), notice: '投稿できませんでした...' }
       end  
     end  
   end  

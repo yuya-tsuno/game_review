@@ -4,7 +4,7 @@ RSpec.describe Favorite, type: :model do
   before do
     @game = Game.create(title: "title", company: "company", price: 5000, genre: 5, released_at: "2020-05-05", story: "story", icon: "icon_URL")
     @user= User.new(name: "name", introduce: "introduce", icon: "icon_URL", admin: false, email: "test@e.mail", password: "password")
-    @user.skip_confirmation!
+    # @user.skip_confirmation!
     @user.save
   end
 
