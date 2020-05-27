@@ -30,7 +30,8 @@ Rails.application.routes.draw do
   resources :games, only: [:index, :new, :create, :show] do
     resources :comments, only: [:create, :destroy]
   end
-  
+
+  resources :comments, only: [:edit, :update]
   resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :owns, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]

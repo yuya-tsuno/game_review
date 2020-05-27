@@ -3,7 +3,8 @@
     <% if comment.id.present? %>
       <li>
         <span><%= comment.body %> by <%= link_to comment.user.name, user_path(comment.user_id) %>さん</span>
-        <%= link_to "コメント削除" ,game_comment_path(comment.game.id, comment.id), method: :delete if current_user ==  comment.user || current_user&.admin? %>
+        <%= link_to "コメント編集", edit_comment_path(comment.id), class: "btn btn-primary mr-3" if current_user ==  comment.user %>
+        <%= link_to "コメント削除", game_comment_path(comment.game.id, comment.id), method: :delete if current_user ==  comment.user %>
       </li>
     <% end %>
   <% end %>

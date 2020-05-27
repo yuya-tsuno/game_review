@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin?
-  before_action :set_comment, only: [:show, :edit, :update]
+  before_action :set_comment, only: [:edit, :update]
 
   def index
     @comments = Comment.all
@@ -24,16 +24,27 @@ class Admin::CommentsController < ApplicationController
     comment = Comment.find_by(id: params[:id], game_id: params[:game_id])
     comment.destroy
     redirect_to admin_game_path(params[:game_id]), notice:"レビューを削除しました！"
-  end  
+  end
+
+  def edit
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to admin_game_path(@comment.game_id), notice: "コメントを編集しました！"
+    else
+      render :edit
+    end
+  end
 
   private
+  
+  def comment_params
+    params.require(:comment).permit(:body, :game_id, :user_id)
+  end  
   
   def set_comment
     @comment = Comment.find(params[:id])
   end
-
-  def comment_params
-    params.require(:comment).permit(:body, :game_id, :user_id)
-  end  
 
 end
