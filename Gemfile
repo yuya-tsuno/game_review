@@ -81,8 +81,5 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'rails-i18n'
 gem 'enum_help' 
-# gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
-# //= require jquery3
-# //= require popper
-# //= require bootstrap-sprockets

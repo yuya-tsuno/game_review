@@ -42,8 +42,8 @@
   
   <div class="field">
     <%= form.label :icon %>
+    <%= form.file_field :icon, class: "icon_file" %>
     <%= image_tag(@game.icon.resize_for_game_icon.url) if @game.icon && @game.icon.url %>
-    <%= form.file_field :icon %>
     <%= form.hidden_field :icon_cache %>
   </div>
 
