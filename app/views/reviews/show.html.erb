@@ -9,5 +9,5 @@
 <p><strong>総合点: </strong><%= @review.direction + @review.operability + @review.story + @review.volume + @review.like %>点/100点</p>
 <p><strong>コメント: </strong><%= @review.body %></p>
 
-<%= link_to 'レビュー編集', edit_review_path(@review.id), class: "btn btn-primary mr-3" if current_user == @review.user %>
-<%= link_to 'レビュー削除', review_path(@review.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" if current_user == @review.user %>
+<%= link_to '編集', edit_review_path(@review.id), class: "btn btn-primary mr-3" if current_user == @review.user %>
+<%= link_to '削除', review_path(@review.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" if current_user == @review.user %>
