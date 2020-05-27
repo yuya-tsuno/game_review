@@ -19,11 +19,11 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "ログイン" %>
+    <%= f.submit "ログイン" class: "btn btn-primary mr-3" %>
   </div>
 <% end %>
 
 <div>
-  <%= link_to 'ゲストとしてログイン', users_sign_in_as_a_guest_path, method: :post %><br>
-  <%= link_to 'ゲストアドミン（管理者）としてログイン', users_sign_in_as_an_admin_path, method: :post %>
+  <%= link_to 'ゲストとしてログイン', users_sign_in_as_a_guest_path, method: :post, class: "btn btn-primary mr-3" %><br>
+  <%= link_to 'ゲストアドミン（管理者）としてログイン', users_sign_in_as_an_admin_path, method: :post, class: "btn btn-primary mr-3" %>
 </div>
