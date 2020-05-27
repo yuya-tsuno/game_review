@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       render :new
     else
       if @user.save
-        redirect_to admin_user_path(@user.id), notice: "ユーザー登録しました！"
+        redirect_to user_path(@user.id), notice: "ユーザー登録しました！"
       else
         render :new
       end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user.id), notice: "ユーザー情報を編集しました！"
+      redirect_to user_path(@user.id), notice: "ユーザー情報を編集しました！"
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path, notice:"ユーザーを削除しました！"
+    redirect_to new_user_registration_path, notice:"ユーザーを削除しました。"
   end
 
   def guest

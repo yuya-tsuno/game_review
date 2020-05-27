@@ -35,7 +35,7 @@
 
   <% @game.reviews.each do |review| %>
     <tr>
-      <td><%= review.user.name %>さんによる</td>
+      <td><%= link_to review.user.name, user_path(review.user_id) %>さんによる</td>
       <td><%= review.summary %></td>
       <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
       <td><%= link_to "詳細", review_path(review.id), class: "btn btn-primary mr-3"  %></td>

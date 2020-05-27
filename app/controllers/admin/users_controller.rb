@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
       render :new
     else
       if @user.save
-        redirect_to user_path(@user.id), notice: "ユーザーを作成しました！"
+        redirect_to admin_user_path(@user.id), notice: "ユーザーを作成しました！"
       else
         render :new
       end
@@ -40,7 +40,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path, notice:"ユーザーを削除しました！"
+    redirect_to new_user_registration_path, notice:"ユーザーを削除しました。"
   end
 
   def guest
@@ -49,7 +49,7 @@ class Admin::UsersController < ApplicationController
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to admin_root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   def admin
@@ -58,7 +58,7 @@ class Admin::UsersController < ApplicationController
       user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
     sign_in user
-    redirect_to root_path, notice: '管理者ユーザーとしてログインしました。'
+    redirect_to admin_root_path, notice: '管理者ユーザーとしてログインしました。'
   end
 
   private

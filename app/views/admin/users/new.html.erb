@@ -27,7 +27,10 @@
     <%= form.text_field :password %>
   </div>
   
-  <%= form.submit %>
+  <div class="action">
+    <%= form.submit class: "btn btn-primary mr-3" %>
+  </div>
+
 <% end %>
 
 <%= link_to "ユーザー一覧", users_path %>

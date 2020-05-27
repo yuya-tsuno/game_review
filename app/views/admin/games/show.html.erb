@@ -37,10 +37,11 @@
 
 <% @game.reviews.each do |review| %>
   <tr>
-    <td><%= review.user.name %>さんによる</td>
+    <td><%= link_to review.user.name, admin_user_path(review.user_id) %>さんによる</td>
     <td><%= review.summary %></td>
     <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
     <td><%= link_to "レビュー詳細", admin_review_path(review.id), class: 'btn btn-primary' %></td>
+    <td><%= link_to "レビュー詳細", edit_admin_review_path(review.id), class: 'btn btn-primary' %></td>
     <td><%= link_to "レビュー削除", admin_review_path(review.id), method: :delete, class: 'btn btn-primary',data: { confirm: '本当に削除していいですか？' } %></td>
   </tr>
 <% end %>
@@ -53,4 +54,4 @@
 </div>
 <%= render partial: 'admin/comments/form', locals: { comment: @comment, game: @game, user: current_user } %>
 
-<%= link_to 'ゲーム一覧へ', admin_games_path %>
+<%= link_to 'ゲーム一覧へ', admin_games_path, class: "btn btn-primary mr-3" %>

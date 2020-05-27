@@ -39,7 +39,10 @@
     <%= form.check_box :admin %>
   </div>
 
-  <%= form.submit %>
+  <div class="action">
+    <%= form.submit class: "btn btn-primary mr-3" %>
+  </div>
+
 <% end %>
 
-<%= link_to "ユーザー一覧", users_path %>
+<%= link_to "ユーザー一覧", admin_users_path %>

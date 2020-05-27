@@ -16,7 +16,7 @@
     <%= form.collection_select :game_id, Game.all, :id, :title, {selected: @review.game_id}%>
   </div>
 
-    <%= link_to "レビューしたいゲームがない場合...", new_game_path %>
+    <%= link_to "レビューしたいゲームがない場合...", new_admin_game_path %>
 
   <div class="field">
     <%= form.label :direction %>
@@ -53,7 +53,10 @@
     <%= form.text_area :body %>
   </div>
 
-  <%= form.submit %>
+  <div class="action">
+    <%= form.submit class: "btn btn-primary mr-3" %>
+  </div>
+
 <% end %>
 
 <%= link_to "レビュー一覧", admin_reviews_path, class: "btn btn-primary mr-3" %>

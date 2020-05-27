@@ -11,8 +11,8 @@
   <% @reviews.each do |review| %>
     <tr>
       <td><%= review.summary %></td>
-      <td><%= review.user.name %>さんによる</td>
-      <td><%= review.game.title %>へのレビュー</td>
+      <td><%= link_to review.user.name, admin_user_path(review.user_id) %>さんによる</td>
+      <td><%= link_to review.game.title, admin_game_path(review.game_id) %>へのレビュー</td>
       <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
       <td><%= link_to "レビュー詳細", admin_review_path(review.id), class: "btn btn-primary mr-3" %></td>
       <td><%= link_to "レビュー編集", edit_admin_review_path(review.id), class: "btn btn-primary mr-3" %></td>
@@ -22,4 +22,4 @@
 </table>
 
 <%= link_to 'トップ画面に戻る', admin_root_path, class: "btn btn-primary mr-3"  %>
-<%= link_to '新規レビュー作成', new_admin_review_path, class: "btn btn-primary mr-3"  %>
+<%= link_to '新規レビュー作成', new_admin_review_path, class: "btn btn-primary mr-3" %>

@@ -17,7 +17,7 @@ class Admin::ReviewsController < ApplicationController
       render :new
     else
       if @review.save
-        redirect_to admin_reviews_path, notice: "レビューを作成しました！"
+        redirect_to admin_review_path(@review.id), notice: "レビューを作成しました！"
       else
         render :new
       end
@@ -32,7 +32,7 @@ class Admin::ReviewsController < ApplicationController
 
   def update
     if @review.update(review_params)
-      redirect_to admin_reviews_path, notice: "レビューを編集しました！"
+      redirect_to admin_review_path(@review), notice: "レビューを編集しました！"
     else
       render :edit
     end

@@ -47,7 +47,10 @@
     <%= form.hidden_field :icon_cache %>
   </div>
 
-  <%= form.submit %>
+  <div class="field_action">
+    <%= form.submit class: "btn btn-primary mr-3" %>
+  </div>
+
 <% end %>
 
 <%= link_to "ゲーム一覧", admin_games_path, class: "btn btn-primary mr-3" %>
