@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -27,13 +27,11 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録", class: "btn btn-primary mr-3" %>
   </div>
 <% end %>
 
 <div>
-  <%= link_to 'Sign in as a guest', users_sign_in_as_a_guest_path, method: :post %> |
-  <%= link_to 'Sign in as an Admin', users_sign_in_as_an_admin_path, method: :post %> 
+  <%= link_to 'ゲストとしてログイン', users_sign_in_as_a_guest_path, method: :post, class: "btn btn-primary mr-3" %><br>
+  <%= link_to 'ゲストアドミン（管理者）としてログイン', users_sign_in_as_an_admin_path, method: :post, class: "btn btn-primary mr-3" %>
 </div>
-
-<%= render "devise/shared/links" %>
