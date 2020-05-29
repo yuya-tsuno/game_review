@@ -4,17 +4,21 @@ class GamesController < ApplicationController
   
   def index
     # binding.pry
+    unless params[:q].nil?
+      if params[:q][:price_gteq].present? && params[:q][:price_lt].present?
+        if params[:q][:price_gteq] > params[:q][:price_lt]
+          flash[:notice] = "価格範囲の下限が上限を上回っています。"
+          redirect_to games_path
+        end
+      end
 
-    # if params[:q]
-      # .present? && params[:q][:price_lt].present?) || (params[:q][:released_at_gteq].present? && params[:q][:price_lteq].present?)
-      # if params[:q][:price_gteq] > params[:q][:price_lt]
-        # flash[:notice] = "価格範囲の下限が上限を上回っています。"
-        # render action: :index
-      # elsif params[:q][:released_at_gteq] > params[:q][:price_lteq]
-        # flash[:notice] = "発売日範囲の下限が上限を上回っています。"
-        # render action: :index
-      # end
-    # end
+      if params[:q][:released_at_gteq].present? && params[:q][:released_at_lteq].present?
+        if params[:q][:released_at_gteq].to_time > params[:q][:released_at_lteq].to_time
+        flash[:notice] = "発売日の下限が上限より後日になっています。"
+          redirect_to games_path
+        end
+      end
+    end
 
     @q = Game.ransack(params[:q])
     if params[:order_by_direction] # 演出点数順（降順）
