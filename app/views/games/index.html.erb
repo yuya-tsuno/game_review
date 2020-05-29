@@ -35,17 +35,16 @@
 <h3>ゲームタイトル一覧</h3>
 <table class="table" id="fixed">
   <tr>
-    <th><%= sort_link(@q, :title, "タイトル", default_order: :asc) %></th>
-    <th><%= sort_link(@q, :company, "販売会社", default_order: :asc) %></th>
-    <th><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
-
-    <th><%= link_to games_path(order_by_direction: true) do %>グラフィック<br>・サウンド<% end %></th>
-    <th><%= link_to games_path(order_by_operability: true) do %>操作性<br>・ロード<% end %></th>
-    <th><%= link_to games_path(order_by_story: true) do %>ストーリー<br>・世界観<% end %></th>
-    <th><%= link_to games_path(order_by_volume: true) do %>ボリューム・<br>やりこみ要素<% end %></th>
-    <th><%= link_to "ハマり度", games_path(order_by_like: true) %></th>
-    <th><%= link_to "総合点数", games_path(order_by_sum: true) %></th>
-    <th><%= link_to "レビュー件数", games_path(order_by_reviews: true) %></th>
+    <th class="display_center"><%= sort_link(@q, :title, "タイトル", default_order: :asc) %></th>
+    <th class="display_center"><%= sort_link(@q, :company, "販売会社", default_order: :asc) %></th>
+    <th class="display_center"><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
+    <th class="display_center"><%= link_to games_path(order_by_direction: true) do %>グラフィック<br>・サウンド<% end %></th>
+    <th class="display_center"><%= link_to games_path(order_by_operability: true) do %>操作性<br>・ロード<% end %></th>
+    <th class="display_center"><%= link_to games_path(order_by_story: true) do %>ストーリー<br>・世界観<% end %></th>
+    <th class="display_center"><%= link_to games_path(order_by_volume: true) do %>ボリューム・<br>やりこみ要素<% end %></th>
+    <th class="display_center"><%= link_to "ハマり度", games_path(order_by_like: true) %></th>
+    <th class="display_center"><%= link_to "総合点数", games_path(order_by_sum: true) %></th>
+    <th class="display_center"><%= link_to "レビュー件数", games_path(order_by_reviews: true) %></th>
     <th></th>
 
   </tr>
