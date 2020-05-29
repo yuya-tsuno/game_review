@@ -4,6 +4,18 @@ class GamesController < ApplicationController
   
   def index
     # binding.pry
+
+    # if params[:q]
+      # .present? && params[:q][:price_lt].present?) || (params[:q][:released_at_gteq].present? && params[:q][:price_lteq].present?)
+      # if params[:q][:price_gteq] > params[:q][:price_lt]
+        # flash[:notice] = "価格範囲の下限が上限を上回っています。"
+        # render action: :index
+      # elsif params[:q][:released_at_gteq] > params[:q][:price_lteq]
+        # flash[:notice] = "発売日範囲の下限が上限を上回っています。"
+        # render action: :index
+      # end
+    # end
+
     @q = Game.ransack(params[:q])
     if params[:order_by_direction] # 演出点数順（降順）
       @games = Game.select('games.*', 'sum(reviews.direction) * 5 / count(reviews.id) AS reviews').left_joins(:reviews).group('games.id').order('reviews desc').page(params[:page]).per(100)

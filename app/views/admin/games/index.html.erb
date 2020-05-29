@@ -2,13 +2,13 @@
   <div class="form-inline">
     <div class="form-group">
       <%= form.label :title_or_company, "タイトルまたは販売会社" %> : 
-      <%= form.search_field :title_or_company_cont, class: "search_title_or_company_form form-control" %>, 
+      <%= form.search_field :title_or_company_cont, include_blank: true, class: "search_title_or_company_form form-control" %>, 
     </div>
 
     <div class="form-group">
       <%= form.label :price, class: 'form-group' %> : 
-      <%= form.number_field :price_gteq, min: 0, class: 'form-control' %>以上〜
-      <%= form.number_field :price_lt, min: 0, max: 100000, class: 'form-control' %>未満
+      <%= form.number_field :price_gteq, min: 0, include_blank: true, class: 'form-control' %>以上〜
+      <%= form.number_field :price_lt, min: 0, max: 100000, include_blank: true, class: 'form-control' %>未満
     </div>
 
     <br>
@@ -20,12 +20,13 @@
     
     <div class="form-group">
       <%= form.label :released_at, class: 'form-group' %> : 
-      <%= form.date_field :released_at_gteq, class: 'form-control' %>〜
-      <%= form.date_field :released_at_lteq, class: 'form-control' %>
+      <%= form.date_field :released_at_gteq, include_blank: true, class: 'form-control' %>〜
+      <%= form.date_field :released_at_lteq, include_blank: true, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= form.submit "検索", class: 'btn btn-primary' %>
+      <%= link_to 'クリア', admin_games_path, class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>

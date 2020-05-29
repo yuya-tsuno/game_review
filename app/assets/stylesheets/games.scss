@@ -73,7 +73,7 @@ ul.top_menu {
 }
 
 .content{
-  width: 100%;
+  width: 95%;
   margin: 0 auto;
   // float: left;
   font-size: 1.5rem;
@@ -107,6 +107,7 @@ ul.top_menu {
 
 table{
   vertical-align: middle;
+  margin: 5px;
 }
 
 .btn {
@@ -131,3 +132,7 @@ input[type="text"] {
   margin: 10px;
 }
 
+.game_story {
+  width: 60%;
+  margin: 0 auto;
+}
