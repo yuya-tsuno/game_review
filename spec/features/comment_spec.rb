@@ -33,7 +33,7 @@ RSpec.describe 'コメント管理機能', type: :feature do
       it "該当コメントが削除される" do
         @comment = Comment.create(body: "body", game_id: @game.id, user_id: @user.id)
         visit game_path(@game.id)
-        click_on 'コメント削除'
+        click_on '削除'
         expect(page).not_to have_content @comment.body
       end
     end
