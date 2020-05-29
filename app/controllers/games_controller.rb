@@ -7,14 +7,14 @@ class GamesController < ApplicationController
     unless params[:q].nil?
       if params[:q][:price_gteq].present? && params[:q][:price_lt].present?
         if params[:q][:price_gteq] > params[:q][:price_lt]
-          flash[:notice] = "価格範囲の下限が上限を上回っています。"
+          flash[:notice] = "価格の検索範囲を正しく入力してください。"
           redirect_to games_path
         end
       end
 
       if params[:q][:released_at_gteq].present? && params[:q][:released_at_lteq].present?
         if params[:q][:released_at_gteq].to_time > params[:q][:released_at_lteq].to_time
-        flash[:notice] = "発売日の下限が上限より後日になっています。"
+        flash[:notice] = "発売日の検索範囲を正しく入力してください。"
           redirect_to games_path
         end
       end

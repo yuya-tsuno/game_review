@@ -13,29 +13,29 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :name %> : 
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
+    <%= form.label :email %> : 
     <%= form.text_field :email %>
   </div>
           
   <div class="field">
-    <%= form.label :introduce %>
+    <%= form.label :introduce %> : 
     <%= form.text_field :introduce %>
   </div>
   
   <div class="field">
-    <%= form.label :icon %>
+    <%= form.label :icon %> : 
     <%= form.file_field :icon, class: "icon_file" %>
     <%= image_tag(@user.icon.resize_for_user_icon.url) if @user.icon && @user.icon.url %>
     <%= form.hidden_field :icon_cache %>
   </div>
 
   <div class="field">
-    <%= form.label :admin %>
+    <%= form.label :admin %> : 
     <%= form.check_box :admin %>
   </div>
 

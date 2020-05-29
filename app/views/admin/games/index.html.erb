@@ -35,7 +35,6 @@
 <h3>ゲームタイトル一覧</h3>
 <table class="table">
   <tr>
-    <th>パッケージ画像</th>
     <th><%= sort_link(@q, :title, "タイトル名", default_order: :asc) %></th>
     <th><%= sort_link(@q, :company, "販売会社", default_order: :asc) %></th>
     <th><%= sort_link(@q, :released_at, "発売日", default_order: :desc) %></th>
@@ -54,17 +53,15 @@
 
   <% @games.each do |game| %>
     <tr>
-      <td><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %></td>
-      <td><%= game.title %></td>
-      <td><%= game.company %></td>
+      <td colspan="2"><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %><br><strong><%= game.title %></strong><br>from <%= game.company %></td>
       <td><%= game.released_at %></td>
-      <td><%= game.reviews.sum(:direction) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
-      <td><%= game.reviews.sum(:operability) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
-      <td><%= game.reviews.sum(:story) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
-      <td><%= game.reviews.sum(:volume) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
-      <td><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>/100点</td>
-      <td><%= (game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like)) / game.reviews.count if game.reviews.present? %>/100点</td>
-      <td><%= game.reviews.count %>件のレビュー</td>
+      <td><%= game.reviews.sum(:direction) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td><%= game.reviews.sum(:operability) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td><%= game.reviews.sum(:story) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td><%= game.reviews.sum(:volume) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td><%= (game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like)) / game.reviews.count if game.reviews.present? %>点</td>
+      <td><%= game.reviews.count %>件</td>
       <td><%= link_to "詳細", admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
       <td><%= link_to "編集", edit_admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
       <td><%= link_to "削除", admin_game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" %></td>

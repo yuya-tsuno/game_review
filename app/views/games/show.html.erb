@@ -7,10 +7,7 @@
 <p><strong>価格 : </strong><%= @game.price %>円</p> 
 <p><strong>発売日 : </strong><%= @game.released_at %></p>
 <p class="game_story"><strong>あらすじ<br></strong><%= @game.story %></p>
-<% if @game.icon && @game.icon.url %>
-  <p><strong>パッケージ : </strong><%= @game.icon.url %></p>
-  <p><%= image_tag(@game.icon.resize_for_game_icon.url) %></p>
-<% end %>
+<p><strong>パッケージ</strong><br><%= image_tag(@game.icon.resize_for_game_icon.url) if @game.icon && @game.icon.url %></p>
 
 <% if @favorite.present? %>
   <%= link_to '気になるを解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>

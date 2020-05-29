@@ -15,8 +15,6 @@
           <%= link_to image_tag("logo_for_admin.png", class: "logo_image"), admin_root_path %>
           <nav>
             <ul class="top_menu clearfix">
-              <li><%= link_to current_user.name+"さんのプロフィール", admin_user_path(current_user.id) %></li>
-              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }  %></li>
               <li><%= link_to "新規ゲーム投稿", new_admin_game_path %></li>
               <li><%= link_to "新規レビュー投稿", new_admin_review_path %></li>
               <li><%= link_to "レビュー一覧", admin_reviews_path %></li>
@@ -24,6 +22,8 @@
               <li><%= link_to "気になる一覧", admin_favorites_path %></li>
               <li><%= link_to "持ってる一覧", admin_owns_path %></li>
               <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+              <li><%= link_to current_user.name+"さんのプロフィール", admin_user_path(current_user.id) %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }  %></li>
             </ul>
 
           </nav>
@@ -31,17 +31,17 @@
           <%= link_to image_tag("logo.png", class: "logo_image"), root_path %>
           <nav>
             <ul class="top_menu clearfix">
+              <li><%= link_to "新規レビュー投稿", new_review_path %></li>
               <li><%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？?' }  %></li>
-              <li><%= link_to "新規レビュー投稿", new_review_path %></li>
             </ul>
           </nav>
         <% else %>
           <%= link_to image_tag("logo.png", class: "logo_image"), root_path %>
           <nav>
             <ul class="top_menu clearfix">
-              <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
               <li><%= link_to "新規登録", new_user_registration_path, class: 'post' %></li>
+              <li><%= link_to "ログイン", new_user_session_path, class: 'post' %></li>
             </ul>
           </nav>
         <% end %>
