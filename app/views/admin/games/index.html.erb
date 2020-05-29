@@ -54,17 +54,17 @@
   <% @games.each do |game| %>
     <tr>
       <td colspan="2"><%= image_tag(game.icon.resize_for_game_icon.url) if game.icon && game.icon.url %><br><strong><%= game.title %></strong><br>from <%= game.company %></td>
-      <td><%= game.released_at %></td>
-      <td><%= game.reviews.sum(:direction) * 5 / game.reviews.count if game.reviews.present? %>点</td>
-      <td><%= game.reviews.sum(:operability) * 5 / game.reviews.count if game.reviews.present? %>点</td>
-      <td><%= game.reviews.sum(:story) * 5 / game.reviews.count if game.reviews.present? %>点</td>
-      <td><%= game.reviews.sum(:volume) * 5 / game.reviews.count if game.reviews.present? %>点</td>
-      <td><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>点</td>
-      <td><%= (game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like)) / game.reviews.count if game.reviews.present? %>点</td>
-      <td><%= game.reviews.count %>件</td>
-      <td><%= link_to "詳細", admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
-      <td><%= link_to "編集", edit_admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
-      <td><%= link_to "削除", admin_game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" %></td>
+      <td class="display_center"><%= game.released_at %></td>
+      <td class="display_center"><%= game.reviews.sum(:direction) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td class="display_center"><%= game.reviews.sum(:operability) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td class="display_center"><%= game.reviews.sum(:story) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td class="display_center"><%= game.reviews.sum(:volume) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td class="display_center"><%= game.reviews.sum(:like) * 5 / game.reviews.count if game.reviews.present? %>点</td>
+      <td class="display_center"><%= (game.reviews.sum(:direction) + game.reviews.sum(:operability) + game.reviews.sum(:story) + game.reviews.sum(:volume) + game.reviews.sum(:like)) / game.reviews.count if game.reviews.present? %>点</td>
+      <td class="display_center"><%= game.reviews.count %>件</td>
+      <td class="display_center"><%= link_to "詳細", admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
+      <td class="display_center"><%= link_to "編集", edit_admin_game_path(game.id), class: "btn btn-primary mr-3" %></td>
+      <td class="display_center"><%= link_to "削除", admin_game_path(game.id), method: :delete ,data: { confirm: '本当に削除していいですか？' }, class: "btn btn-primary mr-3" %></td>
     </tr>
   <% end %>
 </table>
