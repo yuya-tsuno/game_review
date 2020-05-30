@@ -37,7 +37,7 @@
   <tr>
     <td><%= link_to review.user.name, admin_user_path(review.user_id) %>さんによる</td>
     <td><%= review.summary %></td>
-    <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
+    <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点</td>
     <td><%= link_to "詳細", admin_review_path(review.id), class: 'btn btn-primary' %></td>
     <td><%= link_to "詳細", edit_admin_review_path(review.id), class: 'btn btn-primary' %></td>
     <td><%= link_to "削除", admin_review_path(review.id), method: :delete, class: 'btn btn-primary',data: { confirm: '本当に削除していいですか？' } %></td>
