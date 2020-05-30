@@ -27,7 +27,7 @@ li {
 
 .header {
   background-color:white;
-  height: 70px;
+  height: 80px;
   font-size: 1.5rem;
   // position: fixed;
 }
@@ -143,4 +143,10 @@ input[type="text"] {
 
 .display_center {
   vertical-align: middle !important;
+}
+
+#dropdownMenuLink {
+  font-size: 1.5rem;
+  margin: 0;
+  border: 0ex;
 }

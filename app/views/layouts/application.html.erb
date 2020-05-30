@@ -15,14 +15,24 @@
           <%= link_to image_tag("logo_for_admin.png", class: "logo_image"), admin_root_path %>
           <nav>
             <ul class="top_menu clearfix">
-              <li><%= link_to "新規ゲーム投稿", new_admin_game_path %></li>
-              <li><%= link_to "新規レビュー投稿", new_admin_review_path %></li>
-              <li><%= link_to "レビュー一覧", admin_reviews_path %></li>
-              <li><%= link_to "コメント一覧", admin_comments_path %></li>
-              <li><%= link_to "気になる一覧", admin_favorites_path %></li>
-              <li><%= link_to "持ってる一覧", admin_owns_path %></li>
-              <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-              <li><%= link_to current_user.name+"さんのプロフィール", admin_user_path(current_user.id) %></li>
+              <li>
+                <div class="dropdown">
+                  <!-- 切替ボタンの設定 -->
+                  <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理者用ツール</a>
+                  <!-- ドロップメニューの設定 -->
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <%= link_to "新規ゲーム登録", new_admin_game_path, class: "dropdown-item" %>
+                    <%= link_to "新規レビュー投稿", new_admin_review_path, class: "dropdown-item" %>
+                    <%= link_to "レビュー一覧", admin_reviews_path, class: "dropdown-item" %>
+                    <%= link_to "ユーザー一覧", admin_users_path, class: "dropdown-item" %>
+                    <%= link_to "コメント一覧", admin_comments_path, class: "dropdown-item" %>
+                    <%= link_to "気になる一覧", admin_favorites_path, class: "dropdown-item" %>
+                    <%= link_to "持ってる一覧", admin_owns_path, class:"dropdown-item" %>
+                  </div><!-- /.dropdown-menu -->
+                </div><!-- /.dropdown -->
+              </li>
+              <li><%= link_to "プロフィール", admin_user_path(current_user.id) %></li>
+              <li><%= link_to "トップ", admin_root_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？' }  %></li>
             </ul>
 
@@ -31,8 +41,9 @@
           <%= link_to image_tag("logo.png", class: "logo_image"), root_path %>
           <nav>
             <ul class="top_menu clearfix">
-              <li><%= link_to "新規レビュー投稿", new_review_path %></li>
-              <li><%= link_to current_user.name+"さんのプロフィール", user_path(current_user.id) %></li>
+              <li><%= link_to "レビュー投稿", new_review_path %></li>
+              <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+              <li><%= link_to "トップ", root_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？?' }  %></li>
             </ul>
           </nav>

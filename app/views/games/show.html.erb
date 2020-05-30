@@ -1,6 +1,5 @@
-<h1><%= @game.title%>の詳細</h1>
+<h3><%= @game.title%>の詳細</h3>
 
-<p><strong>ID : </strong><%= @game.id %></p>
 <p><strong>タイトル : </strong><%= @game.title %></p>
 <p><strong>制作会社 : </strong><%= @game.company %></p>
 <p><strong>ジャンル : </strong><%= @game.genre_i18n %></p>
@@ -33,7 +32,7 @@
 
   <% @game.reviews.each do |review| %>
     <tr>
-      <td><%= link_to review.user.name, user_path(review.user_id) %>さんによる</td>
+      <td><%= link_to review.user.name, user_path(review.user_id) %>さん</td>
       <td><%= review.summary %></td>
       <td><%= review.direction + review.direction + review.operability + review.story + review.volume %>点/100点</td>
       <td><%= link_to "詳細", review_path(review.id), class: "btn btn-primary mr-3"  %></td>
