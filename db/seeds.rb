@@ -240,6 +240,17 @@ admin_user.save
   end
 end
 
+5.times do |g|
+  g = g + 1
+  10.times do |u|
+    u = u + 1
+    Relationship.create(
+      follower_id: u,
+      followed_id: g+u,
+    )
+  end
+end
+
 # ゲストのレビュー等を作成
 15.times do |g|
   g = g + 1
@@ -269,6 +280,11 @@ end
   Own.create(
     game_id: g,
     user_id: 16,
+  )
+
+  Relationship.create(
+    follower_id: 16,
+    followed_id: g,
   )
 end
 
@@ -301,5 +317,10 @@ end
   Own.create(
     game_id: g+10,
     user_id: 17,
+  )
+
+  Relationship.create(
+    follower_id: 17,
+    followed_id: g+5,
   )
 end
