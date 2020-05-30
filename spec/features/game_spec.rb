@@ -69,7 +69,6 @@ RSpec.describe 'ゲーム管理機能', type: :feature do
           visit game_path(game.id)
           # save_and_open_page
 
-          expect(page).to have_content game.id
           expect(page).to have_content game.title
           expect(page).to have_content game.company
           expect(page).to have_content game.genre_i18n

@@ -18,7 +18,7 @@ RSpec.describe 'コメント管理機能', type: :feature do
     context 'コメント（質問）を入力して、登録ボタンを押した場合' do
       it '新規コメントが保存されること' do
         visit game_path(@game.id)
-        pending 'なぜかコメント入力フォームが認識されないので保留（機能自体は動く）'
+        pending 'コメント入力フォームが認識されないので保留（Ajax関連、機能自体は動く）'
         # find("コメント").set("テストコメント")
         # find(".comment_area").set("テストコメント")
         # fill_in "comment_area", with: "テストコメント"

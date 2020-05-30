@@ -42,7 +42,7 @@ RSpec.describe 'ユーザー管理機能', type: :feature do
         log_in #@user2としてだはなく、@userとしてログインします
         visit edit_user_path(@user2.id)
         expect(page).to have_content 'あなたのアカウントではアクセス権限がありません'
-        expect(page).to have_content 'ゲーム一覧'
+        expect(page).to have_content 'タイトルまたは販売会社'
         # save_and_open_page
       end
     end
@@ -59,7 +59,6 @@ RSpec.describe 'ユーザー管理機能', type: :feature do
         users = User.all
         users.each do |user|
           visit user_path(user.id)
-          expect(page).to have_content user.id
           expect(page).to have_content user.name
 
           user.reviews.each do |review|
