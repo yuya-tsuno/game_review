@@ -10,6 +10,12 @@
     </div>
   <% end %>
 
+<!--
+  <% if notice %>
+    <p class="alert alert-notice"><%= notice %></p>
+  <% end %>
+-->
+
   <div class="field">
     <%= form.label :body, "コメント" %>
     <%= form.text_area :body, class: "comment_area", id: "comment_area" %>

@@ -59,14 +59,16 @@
       </header>
 
       <div class="wrapper clearfix">
-        <div class="section">
-          <% if notice %>
-            <p class="alert alert-notice"><%= notice %></p>
-          <% end %>
-          <% if alert %>
-            <p class="alert alert-error"><%= alert %></p>
-          <% end %>
-        </div>
+        <!-- <% unless controller_name == "games" && action_name == "show" %> -->
+          <div class="section">
+            <% if notice %>
+              <p class="alert alert-notice"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-error"><%= alert %></p>
+            <% end %>
+          </div>
+        <!-- <% end %>  -->
 
         <article class="content">
           <%= yield %>
