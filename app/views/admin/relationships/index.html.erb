@@ -1,0 +1,17 @@
+<h3>フォロー一覧</h3>
+
+<table class="table">
+  <tr>
+    <th>フォローしたユーザー</th>
+    <th>フォローされたユーザー</th>
+  </tr>
+
+  <% @relationships.each do |relationship| %>
+    <tr>
+      <td><%= link_to "#{relationship.follower.name}さん", admin_user_path(relationship.follower_id) %>が</td>
+      <td><%= link_to "#{relationship.followed.name}さん", admin_user_path(relationship.followed_id) %>をフォローしました。</td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'トップ画面', admin_root_path, class: "btn btn-primary mr-3"  %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   namespace :admin do
     root 'games#index'
     resources :games do
@@ -8,7 +10,8 @@ Rails.application.routes.draw do
     resources :reviews
     resources :owns, only: [:index, :create, :destroy]
     resources :favorites, only: [:index, :create, :destroy]
-    resources :users    
+    resources :users
+    resources :relationships, only: [:index, :create, :destroy]
   end
   
   post '/users/sign_in_as_a_guest', to: 'users#guest'
@@ -36,6 +39,7 @@ Rails.application.routes.draw do
   resources :owns, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?

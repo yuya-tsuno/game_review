@@ -16,7 +16,7 @@
     <%= form.collection_select :game_id, Game.all, :id, :title, {selected: @review.game_id}%>
   </div>
 
-    <%= link_to "レビューしたいゲームがない場合...", new_admin_game_path %>
+  <%= link_to "レビューしたいゲームがない場合...", new_admin_game_path %>
 
   <div class="field">
     <%= form.label :direction %> : 

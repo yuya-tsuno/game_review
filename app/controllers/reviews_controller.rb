@@ -20,6 +20,10 @@ class ReviewsController < ApplicationController
         # @review.game.favorites.each do |favorite|
         #   ReviewMailer.inform_mail(@review, favorite.user).deliver
         # end
+
+        # @review.user.follower.each do |follower|
+        #   ReviewMailer.inform_mail(@review, follower).deliver
+        # end
         redirect_to review_path(@review.id), notice: "レビューありがとうございます！！"
       else
         render :new
