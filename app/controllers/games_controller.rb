@@ -67,8 +67,8 @@ class GamesController < ApplicationController
   end
 
   def show
-    @comment = @game.comments.build
     @comments = @game.comments
+    @comment = @game.comments.build
     @favorite = current_user.favorites.find_by(game_id: @game.id)
     @own = current_user.owns.find_by(game_id: @game.id)
   end

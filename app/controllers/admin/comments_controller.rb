@@ -21,9 +21,9 @@ class Admin::CommentsController < ApplicationController
   end  
 
   def destroy
-    comment = Comment.find_by(id: params[:id], game_id: params[:game_id])
-    comment.destroy
-    redirect_to admin_game_path(params[:game_id]), notice:"レビューを削除しました！"
+    @comment = Comment.find_by(id: params[:id], game_id: params[:game_id])
+    @comment.destroy
+    render :index
   end
 
   def edit
