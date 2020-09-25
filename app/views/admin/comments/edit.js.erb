@@ -1,1 +1,1 @@
-$("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'comments/edit',  game: @game, comment: @comment %>");
+$("#this_comment_<%= @comment.id %>").replaceWith("<%= j render 'admin/comments/edit', game: @game, comment: @comment %>");
