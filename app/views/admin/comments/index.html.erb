@@ -13,7 +13,6 @@
     <td><%= comment.body %></td>
     <td><%= link_to "#{comment.user.name}さん", admin_user_path(comment.user_id) %>による</td>
     <td><%= link_to comment.game.title, admin_game_path(comment.game_id) %>へのコメント</td>
-    <td><%= link_to "編集", edit_admin_comment_path(comment.id), class: "btn btn-primary mr-3" %></td>
   </tr>
 <% end %>
 </table>

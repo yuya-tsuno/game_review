@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action -> {restrict_access(@comment.user_id)}, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update]
+  before_action -> {restrict_access(@comment.user_id)}, only: [:edit, :update]
 
   def create
     @game = Game.find(params[:game_id])
@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    # binding.pry
     respond_to do |format|
       flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
