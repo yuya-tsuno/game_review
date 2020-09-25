@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: [:edit, :update, :destroy]
-  before_action -> {restrict_access(@comment.user_id)}, only: [:edit, :update, :destroy]
+  before_action :set_comment, only: [:edit, :update]
+  before_action -> {restrict_access(@comment.user_id)}, only: [:edit, :update]
 
   def create
     @game = Game.find(params[:game_id])
@@ -24,13 +24,21 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      flash.now[:notice] = 'コメントの編集中'
+      format.js { render :edit }
+    end
   end
 
   def update
-    if @comment.update(comment_params)
-      redirect_to game_path(@comment.game_id), notice: "コメントを編集しました！"
-    else
-      render :edit
+    respond_to do |format|
+      if @comment.update(comment_params)
+        flash.now[:notice] = 'コメントが編集されました'
+        format.js { render :index }
+      else
+        flash.now[:notice] = 'コメントの編集に失敗しました'
+        format.js { render :edit_error }
+      end
     end
   end
   

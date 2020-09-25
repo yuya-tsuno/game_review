@@ -1,19 +1,7 @@
 Rails.application.routes.draw do
   get 'relationships/create'
   get 'relationships/destroy'
-  namespace :admin do
-    root 'games#index'
-    resources :games do
-      resources :comments, only: [:create, :destroy]
-    end
-    resources :comments, only: [:index, :edit, :update, :destroy]
-    resources :reviews
-    resources :owns, only: [:index, :create, :destroy]
-    resources :favorites, only: [:index, :create, :destroy]
-    resources :users
-    resources :relationships, only: [:index, :create, :destroy]
-  end
-  
+
   post '/users/sign_in_as_a_guest', to: 'users#guest'
   post '/users/sign_in_as_an_admin', to: 'users#admin'
   
@@ -28,19 +16,33 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new'
     get 'logout', to: 'users/sessions#destroy'
   end
-
+  
   root 'games#index'
   resources :games, only: [:index, :new, :create, :show] do
     resources :comments, only: [:create, :destroy]
   end
-
   resources :comments, only: [:edit, :update]
   resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :owns, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :relationships, only: [:create, :destroy]
-
+  resources :conversations do
+    resources :messages
+  end
+  
+  namespace :admin do
+    root 'games#index'
+    resources :games do
+      resources :comments, only: [:create, :destroy]
+    end
+    resources :comments, only: [:index, :edit, :update, :destroy]
+    resources :reviews
+    resources :owns, only: [:index, :create, :destroy]
+    resources :favorites, only: [:index, :create, :destroy]
+    resources :users
+    resources :relationships, only: [:index, :create, :destroy]
+  end
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   

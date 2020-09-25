@@ -4,23 +4,17 @@
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
       <ul>
       <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><%= message %></li> 
       <% end %>
       </ul>
     </div>
   <% end %>
 
-<!--
-  <% if notice %>
-    <p class="alert alert-notice"><%= notice %></p>
-  <% end %>
--->
-
   <div class="field">
-    <%= form.text_area :body, class: "comment_area", id: "comment_area", placeholder: "新規コメントを入力してください。" %>
+    <%= form.text_area :body, id: "comment_body_#{comment.id}" %>
   </div>
 
   <div class="actions">
-    <%= form.submit "コメントする", class: "btn btn-primary mr-3" %>
+    <%= form.submit %>
   </div>
 <% end %>
