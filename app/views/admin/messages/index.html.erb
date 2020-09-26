@@ -5,30 +5,29 @@
 <div class="ui segment">
   <% @messages.each do |message| %>
     <% if message.body.present? %>
-      <div class="item">
-        <div class="content">
-          <div class="header">from <%= message.user.name %> <%= message.message_time %></div>
-          <div class="list">
-            <div class="item">
-              <i class="right triangle icon"></i>
-              <strong><%= message.body %></strong> /
-              <% if message.user == current_user %>
-                <%= message.read ? '既読' : '未読' %>
-              <% end %>
-              <p>-------------------------------------------------------------------------------------------------------------------------</p>
-            </div>
-          </div>
+      <div class="content">
+        <div class="message_sender">
+          <%= image_tag(@user.icon.resize_for_user_icon.url) if message.user.icon && message.user.icon.url %>
+          <%= message.user.name %>
         </div>
+        <div class="message_content">
+          <i class="right triangle icon"></i>
+          <strong><%= message.body %></strong> /
+          <%= message.read ? '既読' : '未読' if message.user == current_user%>
+          <%= message.message_time %>
+        </div>
+        <p>=========================================================================================================================================</p>
       </div>
     <% end %>
   <% end %>
 </div>
+
 <%= form_with(model: [@conversation, @message]) do |f| %>
   <div class="field">
     <%= f.text_area :body, class: "form-control" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div>
-    <%= f.submit "メッセージを送る" %>
+    <%= f.submit "メッセージを送る", class: "btn btn-primary mr-3" %>
   </div>
 <% end %>
