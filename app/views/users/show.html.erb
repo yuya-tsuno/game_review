@@ -9,9 +9,17 @@
 <p class="user_introduce"><strong>自己紹介文</strong><br><%= @user.introduce %></p> 
 <p><strong>アイコン</strong><br><%= image_tag(@user.icon.resize_for_user_icon.url) if @user.icon && @user.icon.url %></p>
 
-<% if @user != current_user %><%= render 'follow_form', user: @user %><% end %>
-<%= link_to 'プロフィール編集', edit_user_path(@user.id), class: "btn btn-primary mr-3" if @user == current_user %>
-<%= link_to '退会', user_path(@user.id), method: :delete, class: "btn btn-primary mr-3" ,data: { confirm: '本当にアカウント削除していいですか？（ゲストユーザーでログインの場合はご遠慮ください。）' }  if @user == current_user %>
+<% if @user != current_user %>
+  <li>
+    <div class="item">
+      <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary mr-3" %>
+    </div>
+  </li>
+  <li><%= render 'follow_form', user: @user %></li>
+<% elsif @user == current_user %>
+  <%= link_to 'プロフィール編集', edit_user_path(@user.id), class: "btn btn-primary mr-3" %>
+  <%= link_to '退会', user_path(@user.id), method: :delete, class: "btn btn-primary mr-3" ,data: { confirm: '本当にアカウント削除していいですか？（ゲストユーザーでログインの場合はご遠慮ください。）' } %>
+<% end %>
 
 <% if @user.reviews.present? %>
   <p><%= @user.name %>さんが投稿したゲームレビュー一覧</p>

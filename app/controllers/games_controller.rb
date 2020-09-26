@@ -3,7 +3,6 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show]
   
   def index
-    # binding.pry
     unless params[:q].nil?
       if params[:q][:price_gteq].present? && params[:q][:price_lt].present?
         if params[:q][:price_gteq] > params[:q][:price_lt]
