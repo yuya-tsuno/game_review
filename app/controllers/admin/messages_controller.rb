@@ -1,5 +1,6 @@
-class MessagesController < ApplicationController
+class Admin::MessagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :admin?
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
   end

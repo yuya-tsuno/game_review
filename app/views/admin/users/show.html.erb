@@ -8,7 +8,10 @@
 <p class="user_introduce"><strong>自己紹介文</strong><br><%= @user.introduce %></p> 
 <p><strong>アイコン</strong><br><%= image_tag(@user.icon.resize_for_user_icon.url) if @user.icon && @user.icon.url %></p>
 
-<% if @user != current_user %><%= render 'follow_form', user: @user %><% end %>
+<% if @user != current_user %>
+  <%= render 'follow_form', user: @user %>
+  <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-primary mr-3" %>
+<% end %>
 <%= link_to 'プロフィール編集', edit_admin_user_path(@user.id), class: "btn btn-primary mr-3" %>
 <%= link_to '強制退会', admin_user_path(@user.id), method: :delete, class: "btn btn-primary mr-3" ,data: { confirm: '本当にアカウント削除していいですか？（ゲストアドミンユーザーでログインの場合はご遠慮ください。）' } %>
 <%= link_to 'ユーザー一覧', admin_users_path, class: "btn btn-primary mr-3" %>
