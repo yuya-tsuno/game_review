@@ -2,22 +2,36 @@
   <%= link_to '以前のメッセージ', '?m=all' %>
 <% end %>
 
-<div class="ui segment">
+<div class="ui segment kaiwa line">
   <% @messages.each do |message| %>
     <% if message.body.present? %>
-      <div class="content">
-        <div class="message_sender">
-          <%= image_tag(@user.icon.resize_for_user_icon.url) if message.user.icon && message.user.icon.url %>
-          <%= message.user.name %>
-        </div>
-        <div class="message_content">
-          <i class="right triangle icon"></i>
-          <strong><%= message.body %></strong> /
-          <%= message.read ? '既読' : '未読' if message.user == current_user%>
-          <%= message.message_time %>
-        </div>
-        <p>=========================================================================================================================================</p>
-      </div>
+      
+        <% if message.user != current_user %>
+          <div class="message_sender fukidasi left">
+            <%= message.user.name %>
+            <%= image_tag(@user.icon.resize_for_user_icon.url) if message.user.icon && message.user.icon.url %>
+          </div>
+          <div class="message_content fukidasi left">
+            <strong><%= message.body %></strong>
+            <div>
+              <%= message.read ? '既読' : '未読' if message.user == current_user%>
+              <%= message.message_time %>
+            </div>
+          </div>
+        <% elsif message.user == current_user %>
+          <!-- <div class="message_sender">
+            <%= image_tag(@user.icon.resize_for_user_icon.url) if message.user.icon && message.user.icon.url %>
+            <%= message.user.name %>
+          </div> -->
+          <div class="message_content fukidasi right">
+            <strong><%= message.body %></strong>
+            <div>
+              <%= message.read ? '既読' : '未読' if message.user == current_user%>
+              <%= message.message_time %>
+            </div>
+          </div>
+        <% end %>
+      
     <% end %>
   <% end %>
 </div>

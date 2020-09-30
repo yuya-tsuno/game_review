@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
     if @messages.length > 10
       @over_ten = true
       @messages = Message.where(id: @messages[-10..-1].pluck(:id))
+      # @messages = @messages.order(id: :desc).limit(10)
     end
     if params[:m]
       @over_ten = false
@@ -19,6 +20,8 @@ class MessagesController < ApplicationController
     end
     @messages = @messages.order(:created_at)
     @message = @conversation.messages.build
+    
+    # binding.pry
   end
 
   def create
